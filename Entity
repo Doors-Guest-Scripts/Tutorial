@@ -1,0 +1,127 @@
+local spawner = loadstring(game:HttpGet("https://raw.githubusercontent.com/RegularVynixu/Utilities/main/Doors/Entity%20Spawner/V2/Source.lua"))()
+
+---====== Create entity ======---
+
+local entity = spawner.Create({
+	Entity = {
+		Name = "tên thực thể",
+		Asset = "rbxassetid://id model thực thể",
+		HeightOffset = 0
+	},
+	Lights = {
+		Flicker = {
+			Enabled = true (nếu muốn ko chớp điện thì viết false thay thế true), 
+			Duration = thời gian chớp điện
+		},
+		Shatter = true,
+		Repair = false
+	},
+	Earthquake = {
+		Enabled = false (nếu muốn động đất thì viết true thay thế false)
+	},
+	CameraShake = {
+		Enabled = false, (nếu muốn dung lắc màn hình thì viết true thay thế false)
+		Range = 100 (tầm rộng của hitbox dung lắc),
+		Values = {1.5, 20, 0.1, 1} -- Magnitude, Roughness, FadeIn, FadeOut
+	},
+	Movement = {
+		Speed = 15, (tốc độ của thực thể)
+		Delay = 2,
+		Reversed = false (nếu muốn thực thể đi từ cửa trước đến cửa sau thì viết true thay thế false)
+	},
+	Rebounding = {
+		Enabled = false, (nếu muốn thực thể đi qua đi lại thì viết true thay thế flase
+		Type = "Ambush", -- "Blitz"
+		Min = 1, (lần thực thể đi qua đi lại)
+		Max = 1, (lần cao nhất của thực thể đi qua đi lại)
+		Delay = 2
+	},
+	Damage = {
+		Enabled = true,
+		Range = 10, (hitbox damage của thực thể)
+		Amount = 15 (số lượng máu thực thể gây ra cho player)
+	},
+	Crucifixion = {
+		Enabled = false, (nếu muốn thánh giá có thể kill đc thực thể thì viết true thay thế cho false)
+		Range = 60, (hitbox của thánh giá kill thực thể)
+		Resist = false, (nếu muốn thực thể chống cự đc thánh giá thì viết true thay cho false)
+		Break = true
+	},
+	Death = {
+		Type = "Guiding", -- "Curious"
+		Hints = {"You died to..", "Zombie..", "How could you even die by the zombies", "Try better next time"},
+		Cause = ""
+	}
+})
+
+---====== Debug entity ======---
+
+entity:SetCallback("OnSpawned", function()
+    print("Entity has spawned")
+dán script mà bạn muốn khi thực thể spawn
+end)
+
+entity:SetCallback("OnStartMoving", function()
+    print("Entity has started moving")
+dán script mà bạn muốn khi thực thể bắt đầu di chuyển
+end)
+
+entity:SetCallback("OnEnterRoom", function(room, firstTime)
+    if firstTime == true then
+        print("Entity has entered room: ".. room.Name.. " for the first time")
+    else
+        print("Entity has entered room: ".. room.Name.. " again")
+    end
+end)
+
+entity:SetCallback("OnLookAt", function(lineOfSight)
+	if lineOfSight == true then
+		print("Player is looking at entity")
+	else
+		print("Player view is obstructed by something")
+dán script mà bạn muốn khi bạn nhìn vào thực thể
+	end
+end)
+
+entity:SetCallback("OnRebounding", function(startOfRebound)
+    if startOfRebound == true then
+        print("Entity has started rebounding")
+	else
+        print("Entity has finished rebounding")
+	end
+end)
+
+entity:SetCallback("OnDespawning", function()
+    print("Entity is despawning")
+end)
+
+entity:SetCallback("OnDespawned", function()
+    print("Entity has despawned")
+dán script mà bạn muốn khi thực thể biến mất
+end)
+
+entity:SetCallback("OnDamagePlayer", function(newHealth)
+	if newHealth == 0 then
+		print("Entity has killed the player")
+	else
+		print("Entity has damaged the player")
+dán script mà bạn muốn khi bạn vừa bị kill bởi thực thể (như kiểu jumpscare)
+	end
+end)
+
+--[[
+
+DEVELOPER NOTE:
+By overwriting 'CrucifixionOverwrite' the default crucifixion callback will be replaced with your custom callback.
+
+entity:SetCallback("CrucifixionOverwrite", function()
+    print("Custom crucifixion callback")
+end)
+
+]]--
+
+---====== Run entity ======---
+
+entity:Run()
+    end
+end)()
