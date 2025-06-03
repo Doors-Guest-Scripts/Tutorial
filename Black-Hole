@@ -34,10 +34,10 @@ game.Players.LocalPlayer.Character.Humanoid:TakeDamage(5)
         -- If the player dies, update the death cause and show the death hint
         if game.Players.LocalPlayer.Character.Humanoid.Health <= 0 then
             -- Show death hint
-            firesignal(game.ReplicatedStorage.RemotesFolder.DeathHint.OnClientEvent, {"You died to who you call Stare...","He spawns in center of room and he will damage you if you dont look at him","He doesnt like to be ignoring"},"Blue")
+            firesignal(game.ReplicatedStorage.RemotesFolder.DeathHint.OnClientEvent, {"You died to who you call Black Hole...","He spawns in center of room and he will damage you if you dont look at him","He doesnt like to be ignoring"},"Blue")
             wait(0.01)
             -- Update the death cause in the game stats
-            game:GetService("ReplicatedStorage").GameStats["Player_".. game.Players.LocalPlayer.Name].Total.DeathCause.Value = "Stare"
+            game:GetService("ReplicatedStorage").GameStats["Player_".. game.Players.LocalPlayer.Name].Total.DeathCause.Value = "Black Hole"
         end
     end
 end)
@@ -56,6 +56,6 @@ local achievementGiver = loadstring(game:HttpGet("https://raw.githubusercontent.
 achievementGiver({
     Title = "Stop Staring",
     Desc = "Last chance to not look at me",
-    Reason = "Encounter Stare",
-    Image = "rbxassetid://115924349816566"
+    Reason = "Encounter Black Hole",
+    Image = "rbxassetid://97059893535136"
 })
