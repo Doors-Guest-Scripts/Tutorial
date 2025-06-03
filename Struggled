@@ -15,7 +15,7 @@ local Spawner = loadstring(game:HttpGet("https://raw.githubusercontent.com/Regul
 
 local entity = Spawner.createEntity({
     CustomName = "Struggle",
-    Model = "rbxassetid://136351530303753", -- Your entity's model url here ("rbxassetid://1234567890" or GitHub raw url)
+    Model = "rbxassetid://119230788198627", -- Your entity's model url here ("rbxassetid://1234567890" or GitHub raw url)
     Speed = 150,
     MoveDelay = 0,
     HeightOffset = 0,
