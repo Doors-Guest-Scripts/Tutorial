@@ -15,6 +15,7 @@ function CustomGitSound(soundlink, vol, filename)
     local sound = Instance.new("Sound")
     sound.SoundId = GitAud(soundlink, filename)
     sound.Parent = workspace
+    sound.Name = "Spawn"
     sound.Volume = 3
    sound:Play()
 end
@@ -74,6 +75,7 @@ function CustomGitSound(soundlink, vol, filename)
     local sound = Instance.new("Sound")
     sound.SoundId = GitAud(soundlink, filename)
     sound.Parent = workspace
+    sound.Name = "Clone1Spawn"
     sound.PlaybackSpeed = 2
     sound.Volume = 3
    sound:Play()
@@ -126,6 +128,7 @@ function CustomGitSound(soundlink, vol, filename)
     local sound = Instance.new("Sound")
     sound.SoundId = GitAud(soundlink, filename)
     sound.Parent = workspace
+    sound.Name = "Clone2Spawn"
     sound.PlaybackSpeed = 2
     sound.Volume = 3
    sound:Play()
