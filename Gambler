@@ -1,0 +1,283 @@
+function GitAud(soundgit,filename)
+    SoundName=tostring(SoundName)
+    local url=soundgit
+    local FileName = filename
+    writefile(FileName..".mp3", game:HttpGet(url))
+    return (getcustomasset or getsynasset)(FileName..".mp3")
+end
+
+function CustomGitSound(soundlink, vol, filename)
+    local sound = Instance.new("Sound")
+    sound.SoundId = GitAud(soundlink, filename)
+    sound.Parent = workspace
+    sound.Name = "Jumpscare"
+    sound.Volume = 2
+   sound:Play()
+end
+
+CustomGitSound("https://github.com/DoorsHubs/Tutorial/raw/refs/heads/main/iLoveYt.net_YouTube_Horror-Dramatic-Hit-then-Violin-Stinger_Media_qIEfecwYiUA_001_360p.mp3?raw=true", 1, " StartTheme")
+
+game.Lighting.MainColorCorrection.TintColor = Color3.fromRGB(0, 0, 0)
+game.Lighting.MainColorCorrection.Contrast = 10
+local tween = game:GetService("TweenService")
+tween:Create(game.Lighting.MainColorCorrection, TweenInfo.new(2.5), {Contrast = 0}):Play()
+local TweenService = game:GetService("TweenService")
+local TW = TweenService:Create(game.Lighting.MainColorCorrection, TweenInfo.new(5),{TintColor = Color3.fromRGB(255, 255, 255)})
+TW:Play()
+
+-- Check current room
+local entityModel = true
+local latestRoom = game.ReplicatedStorage.GameData.LatestRoom.Value
+
+-- If in Seek, Figure, or Room 90+
+if game.Workspace:FindFirstChild("SeekMovingNewClone") or 
+   latestRoom == 50 or latestRoom == 100 or  
+   (latestRoom >= 90 and latestRoom <= 100) then
+    entityModel = false
+end
+
+local Kill = true
+local depthsTer = game:GetObjects("rbxassetid://112157722690947")[1] -- Load DepthsTer from the ID
+depthsTer.Parent = game.Workspace
+
+local part = depthsTer:FindFirstChildWhichIsA("BasePart") or depthsTer:FindFirstChildWhichIsA("Part")
+
+-- Set the position of DepthsTer in the room
+part.CFrame = game.Workspace.CurrentRooms:GetChildren()[#game.Workspace.CurrentRooms:GetChildren() - 1].Parts.Floor.CFrame + Vector3.new(0, 6, 0)
+wait(3)
+local caption = game.Players.LocalPlayer:WaitForChild("PlayerGui").MainUI.MainFrame.Caption
+caption.TextColor3 = Color3.fromRGB(148, 3, 252)
+require(game.Players.LocalPlayer.PlayerGui.MainUI.Initiator.Main_Game).caption("Let's go gambling!!",true)
+
+function GitAud(soundgit,filename)
+    SoundName=tostring(SoundName)
+    local url=soundgit
+    local FileName = filename
+    writefile(FileName..".mp3", game:HttpGet(url))
+    return (getcustomasset or getsynasset)(FileName..".mp3")
+end
+
+function CustomGitSound(soundlink, vol, filename)
+    local sound = Instance.new("Sound")
+    sound.SoundId = GitAud(soundlink, filename)
+    sound.Parent = workspace
+    sound.Name = "Voiceline"
+    sound.Volume = 2
+   sound:Play()
+end
+
+CustomGitSound("https://github.com/DoorsHubs/Tutorial/raw/refs/heads/main/lv_0_20250603233736.mp3?raw=true", 1, " VoicelineLol")
+
+wait(2)
+game.Lighting.MainColorCorrection.TintColor = Color3.fromRGB(255, 0, 0)
+game.Lighting.MainColorCorrection.Contrast = 10
+local tween = game:GetService("TweenService")
+tween:Create(game.Lighting.MainColorCorrection, TweenInfo.new(2.5), {Contrast = 0}):Play()
+local TweenService = game:GetService("TweenService")
+local TW = TweenService:Create(game.Lighting.MainColorCorrection, TweenInfo.new(5),{TintColor = Color3.fromRGB(255, 255, 255)})
+TW:Play()
+
+local caption = game.Players.LocalPlayer:WaitForChild("PlayerGui").MainUI.MainFrame.Caption
+caption.TextColor3 = Color3.fromRGB(255, 0, 0)
+require(game.Players.LocalPlayer.PlayerGui.MainUI.Initiator.Main_Game).caption("Aw dang it!",true)
+
+function GitAud(soundgit,filename)
+    SoundName=tostring(SoundName)
+    local url=soundgit
+    local FileName = filename
+    writefile(FileName..".mp3", game:HttpGet(url))
+    return (getcustomasset or getsynasset)(FileName..".mp3")
+end
+
+function CustomGitSound(soundlink, vol, filename)
+    local sound = Instance.new("Sound")
+    sound.SoundId = GitAud(soundlink, filename)
+    sound.Parent = workspace
+    sound.Name = "Failed1"
+    sound.Volume = 2
+   sound:Play()
+end
+
+CustomGitSound("https://github.com/DoorsHubs/Tutorial/raw/refs/heads/main/lv_0_20250603234712.mp3?raw=true", 1, " Failed1")
+
+game.Players.LocalPlayer.Character.Humanoid.Health -= 3
+wait(1.5)
+game.Lighting.MainColorCorrection.TintColor = Color3.fromRGB(255, 0, 0)
+game.Lighting.MainColorCorrection.Contrast = 10
+local tween = game:GetService("TweenService")
+tween:Create(game.Lighting.MainColorCorrection, TweenInfo.new(2.5), {Contrast = 0}):Play()
+local TweenService = game:GetService("TweenService")
+local TW = TweenService:Create(game.Lighting.MainColorCorrection, TweenInfo.new(5),{TintColor = Color3.fromRGB(255, 255, 255)})
+TW:Play()
+
+local caption = game.Players.LocalPlayer:WaitForChild("PlayerGui").MainUI.MainFrame.Caption
+caption.TextColor3 = Color3.fromRGB(255, 0, 0)
+require(game.Players.LocalPlayer.PlayerGui.MainUI.Initiator.Main_Game).caption("Aw dang it!",true)
+
+function GitAud(soundgit,filename)
+    SoundName=tostring(SoundName)
+    local url=soundgit
+    local FileName = filename
+    writefile(FileName..".mp3", game:HttpGet(url))
+    return (getcustomasset or getsynasset)(FileName..".mp3")
+end
+
+function CustomGitSound(soundlink, vol, filename)
+    local sound = Instance.new("Sound")
+    sound.SoundId = GitAud(soundlink, filename)
+    sound.Parent = workspace
+    sound.Name = "Failed2"
+    sound.Volume = 2
+   sound:Play()
+end
+
+CustomGitSound("https://github.com/DoorsHubs/Tutorial/raw/refs/heads/main/lv_0_20250603234712.mp3?raw=true", 1, " Failed2")
+
+game.Players.LocalPlayer.Character.Humanoid.Health -= 3
+wait(1.5)
+game.Lighting.MainColorCorrection.TintColor = Color3.fromRGB(255, 0, 0)
+game.Lighting.MainColorCorrection.Contrast = 10
+local tween = game:GetService("TweenService")
+tween:Create(game.Lighting.MainColorCorrection, TweenInfo.new(2.5), {Contrast = 0}):Play()
+local TweenService = game:GetService("TweenService")
+local TW = TweenService:Create(game.Lighting.MainColorCorrection, TweenInfo.new(5),{TintColor = Color3.fromRGB(255, 255, 255)})
+TW:Play()
+
+local caption = game.Players.LocalPlayer:WaitForChild("PlayerGui").MainUI.MainFrame.Caption
+caption.TextColor3 = Color3.fromRGB(255, 0, 0)
+require(game.Players.LocalPlayer.PlayerGui.MainUI.Initiator.Main_Game).caption("Aw dang it!",true)
+
+function GitAud(soundgit,filename)
+    SoundName=tostring(SoundName)
+    local url=soundgit
+    local FileName = filename
+    writefile(FileName..".mp3", game:HttpGet(url))
+    return (getcustomasset or getsynasset)(FileName..".mp3")
+end
+
+function CustomGitSound(soundlink, vol, filename)
+    local sound = Instance.new("Sound")
+    sound.SoundId = GitAud(soundlink, filename)
+    sound.Parent = workspace
+    sound.Name = "Failed3"
+    sound.Volume = 2
+   sound:Play()
+end
+
+CustomGitSound("https://github.com/DoorsHubs/Tutorial/raw/refs/heads/main/lv_0_20250603234712.mp3?raw=true", 1, " Failed3")
+
+game.Players.LocalPlayer.Character.Humanoid.Health -= 3
+wait(1.5)
+game.Lighting.MainColorCorrection.TintColor = Color3.fromRGB(255, 0, 0)
+game.Lighting.MainColorCorrection.Contrast = 10
+local tween = game:GetService("TweenService")
+tween:Create(game.Lighting.MainColorCorrection, TweenInfo.new(2.5), {Contrast = 0}):Play()
+local TweenService = game:GetService("TweenService")
+local TW = TweenService:Create(game.Lighting.MainColorCorrection, TweenInfo.new(5),{TintColor = Color3.fromRGB(255, 255, 255)})
+TW:Play()
+
+local caption = game.Players.LocalPlayer:WaitForChild("PlayerGui").MainUI.MainFrame.Caption
+caption.TextColor3 = Color3.fromRGB(255, 0, 0)
+require(game.Players.LocalPlayer.PlayerGui.MainUI.Initiator.Main_Game).caption("Aw dang it!",true)
+
+function GitAud(soundgit,filename)
+    SoundName=tostring(SoundName)
+    local url=soundgit
+    local FileName = filename
+    writefile(FileName..".mp3", game:HttpGet(url))
+    return (getcustomasset or getsynasset)(FileName..".mp3")
+end
+
+function CustomGitSound(soundlink, vol, filename)
+    local sound = Instance.new("Sound")
+    sound.SoundId = GitAud(soundlink, filename)
+    sound.Parent = workspace
+    sound.Name = "Failed4"
+    sound.Volume = 2
+   sound:Play()
+end
+
+CustomGitSound("https://github.com/DoorsHubs/Tutorial/raw/refs/heads/main/lv_0_20250603234712.mp3?raw=true", 1, " Failed4")
+
+game.Players.LocalPlayer.Character.Humanoid.Health -= 3
+wait(1.5)
+game.Lighting.MainColorCorrection.TintColor = Color3.fromRGB(3, 255, 11)
+game.Lighting.MainColorCorrection.Contrast = 10
+local tween = game:GetService("TweenService")
+tween:Create(game.Lighting.MainColorCorrection, TweenInfo.new(2.5), {Contrast = 0}):Play()
+local TweenService = game:GetService("TweenService")
+local TW = TweenService:Create(game.Lighting.MainColorCorrection, TweenInfo.new(5),{TintColor = Color3.fromRGB(255, 255, 255)})
+TW:Play()
+
+local caption = game.Players.LocalPlayer:WaitForChild("PlayerGui").MainUI.MainFrame.Caption
+caption.TextColor3 = Color3.fromRGB(3, 255, 11)
+require(game.Players.LocalPlayer.PlayerGui.MainUI.Initiator.Main_Game).caption("I can't stop winning!!",true)
+
+function GitAud(soundgit,filename)
+    SoundName=tostring(SoundName)
+    local url=soundgit
+    local FileName = filename
+    writefile(FileName..".mp3", game:HttpGet(url))
+    return (getcustomasset or getsynasset)(FileName..".mp3")
+end
+
+function CustomGitSound(soundlink, vol, filename)
+    local sound = Instance.new("Sound")
+    sound.SoundId = GitAud(soundlink, filename)
+    sound.Parent = workspace
+    sound.Name = "Succesful"
+    sound.Volume = 2
+   sound:Play()
+end
+
+CustomGitSound("https://github.com/DoorsHubs/Tutorial/raw/refs/heads/main/lv_0_20250604002252.mp3?raw=true", 1, " Succesful")
+
+loadstring(game:HttpGet('https://raw.githubusercontent.com/penguinManiack/Crucifix/main/Crucifix.lua'))()
+wait(5)
+game.Lighting.MainColorCorrection.TintColor = Color3.fromRGB(0, 0, 0)
+game.Lighting.MainColorCorrection.Contrast = 10
+local tween = game:GetService("TweenService")
+tween:Create(game.Lighting.MainColorCorrection, TweenInfo.new(2.5), {Contrast = 0}):Play()
+wait(1)
+local TweenService = game:GetService("TweenService")
+local TW = TweenService:Create(game.Lighting.MainColorCorrection, TweenInfo.new(5),{TintColor = Color3.fromRGB(255, 255, 255)})
+TW:Play()
+local cue2 = Instance.new("Sound")
+	cue2.Parent = game.Workspace
+	cue2.Name = "Spawn"
+	cue2.SoundId = "rbxassetid://7053083974"
+	cue2.Volume = 5
+	cue2.PlaybackSpeed = 1
+	cue2:Play()
+depthsTer:Destroy()
+wait(3)
+local cue = Instance.new("Sound")
+	cue.Parent = game.Workspace
+	cue.Name = "Spawn"
+	cue.SoundId = "rbxassetid://175024455"
+	cue.Volume = 1
+	cue.PlaybackSpeed = 1.2
+	cue:Play()
+game.Lighting.MainColorCorrection.TintColor = Color3.fromRGB(255, 107, 8)
+game.Lighting.MainColorCorrection.Contrast = 10
+local tween = game:GetService("TweenService")
+tween:Create(game.Lighting.MainColorCorrection, TweenInfo.new(2.5), {Contrast = 0}):Play()
+local TweenService = game:GetService("TweenService")
+local TW = TweenService:Create(game.Lighting.MainColorCorrection, TweenInfo.new(5),{TintColor = Color3.fromRGB(255, 255, 255)})
+TW:Play()
+local caption = game.Players.LocalPlayer:WaitForChild("PlayerGui").MainUI.MainFrame.Caption
+caption.TextColor3 = Color3.fromRGB(255, 107, 8)
+require(game.Players.LocalPlayer.PlayerGui.MainUI.Initiator.Main_Game).caption("Pain: +10%",true)
+task.wait(0)
+_G.stats.Value += 10
+
+---====== Load achievement giver ======---
+local achievementGiver = loadstring(game:HttpGet("https://raw.githubusercontent.com/Idk-lol2/a-60aa/refs/heads/main/fix%20bage.txt"))()
+
+---====== Display achievement ======---
+achievementGiver({
+    Title = "The Gambling",
+    Desc = "I can't stop winning!!",
+    Reason = "Encounter Gambler",
+    Image = "rbxassetid://133564789838751"
+})
