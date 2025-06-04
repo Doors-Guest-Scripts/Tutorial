@@ -81,7 +81,7 @@ function CustomGitSound(soundlink, vol, filename)
    sound:Play()
 end
 
-CustomGitSound("https://github.com/DoorsHubs/Tutorial/raw/refs/heads/main/lv_0_20250602152425.mp3?raw=true", 1, " StartTheme")
+CustomGitSound("https://github.com/DoorsHubs/Tutorial/raw/refs/heads/main/lv_0_20250602152425.mp3?raw=true", 1, " SpawnGreenClone")
 
 game.Lighting.MainColorCorrection.TintColor = Color3.fromRGB(3, 255, 28)
 game.Lighting.MainColorCorrection.Contrast = 10
@@ -134,7 +134,7 @@ function CustomGitSound(soundlink, vol, filename)
    sound:Play()
 end
 
-CustomGitSound("https://github.com/DoorsHubs/Tutorial/raw/refs/heads/main/lv_0_20250602152425.mp3?raw=true", 1, " StartTheme")
+CustomGitSound("https://github.com/DoorsHubs/Tutorial/raw/refs/heads/main/lv_0_20250602152425.mp3?raw=true", 1, " SpawnGreenClone2")
 
 game.Lighting.MainColorCorrection.TintColor = Color3.fromRGB(3, 255, 28)
 game.Lighting.MainColorCorrection.Contrast = 10
