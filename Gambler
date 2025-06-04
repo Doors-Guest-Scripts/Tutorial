@@ -15,7 +15,7 @@ function CustomGitSound(soundlink, vol, filename)
    sound:Play()
 end
 
-CustomGitSound("https://github.com/DoorsHubs/Tutorial/raw/refs/heads/main/iLoveYt.net_YouTube_Horror-Dramatic-Hit-then-Violin-Stinger_Media_qIEfecwYiUA_001_360p.mp3?raw=true", 1, " StartTheme")
+CustomGitSound("https://github.com/DoorsHubs/Tutorial/raw/refs/heads/main/iLoveYt.net_YouTube_Horror-Dramatic-Hit-then-Violin-Stinger_Media_qIEfecwYiUA_001_360p.mp3?raw=true", 1, " GamblerIsHere")
 
 game.Lighting.MainColorCorrection.TintColor = Color3.fromRGB(0, 0, 0)
 game.Lighting.MainColorCorrection.Contrast = 10
