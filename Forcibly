@@ -21,7 +21,7 @@ function CustomGitSound(soundlink, vol, filename)
    sound:Play()
 end
 
-CustomGitSound("https://github.com/DoorsHubs/Tutorial/raw/refs/heads/main/lv_0_20250602152425.mp3?raw=true", 1, " StartTheme")
+CustomGitSound("https://github.com/DoorsHubs/Tutorial/raw/refs/heads/main/lv_0_20250602152425.mp3?raw=true", 1, " SpawnRedGuy")
 
 game.Lighting.MainColorCorrection.TintColor = Color3.fromRGB(0, 0, 0)
 game.Lighting.MainColorCorrection.Contrast = 10
@@ -82,7 +82,7 @@ function CustomGitSound(soundlink, vol, filename)
    sound:Play()
 end
 
-CustomGitSound("https://github.com/DoorsHubs/Tutorial/raw/refs/heads/main/lv_0_20250602152425.mp3?raw=true", 1, " StartTheme")
+CustomGitSound("https://github.com/DoorsHubs/Tutorial/raw/refs/heads/main/lv_0_20250602152425.mp3?raw=true", 1, " SpawnRedClone")
 
 game.Lighting.MainColorCorrection.TintColor = Color3.fromRGB(255, 0, 0)
 game.Lighting.MainColorCorrection.Contrast = 10
@@ -180,7 +180,7 @@ function CustomGitSound(soundlink, vol, filename)
    sound:Play()
 end
 
-CustomGitSound("https://github.com/DoorsHubs/Tutorial/raw/refs/heads/main/lv_0_20250602152425.mp3?raw=true", 1, " StartTheme")
+CustomGitSound("https://github.com/DoorsHubs/Tutorial/raw/refs/heads/main/lv_0_20250602152425.mp3?raw=true", 1, " SpawnRedClone2")
 
 game.Lighting.MainColorCorrection.TintColor = Color3.fromRGB(255, 0, 0)
 game.Lighting.MainColorCorrection.Contrast = 10
@@ -278,7 +278,7 @@ function CustomGitSound(soundlink, vol, filename)
    sound:Play()
 end
 
-CustomGitSound("https://github.com/DoorsHubs/Tutorial/raw/refs/heads/main/lv_0_20250602152425.mp3?raw=true", 1, " StartTheme")
+CustomGitSound("https://github.com/DoorsHubs/Tutorial/raw/refs/heads/main/lv_0_20250602152425.mp3?raw=true", 1, " SpawnRedClone3")
 
 game.Lighting.MainColorCorrection.TintColor = Color3.fromRGB(255, 0, 0)
 game.Lighting.MainColorCorrection.Contrast = 10
