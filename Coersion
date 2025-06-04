@@ -292,9 +292,9 @@ wait(3)
 local cue = Instance.new("Sound")
 	cue.Parent = game.Workspace
 	cue.Name = "Spawn"
-	cue.SoundId = "rbxassetid://175024455"
+	cue.SoundId = "rbxassetid://1201103772"
 	cue.Volume = 1
-	cue.PlaybackSpeed = 1.2
+	cue.PlaybackSpeed = 1.5
 	cue:Play()
 game.Lighting.MainColorCorrection.TintColor = Color3.fromRGB(255, 107, 8)
 game.Lighting.MainColorCorrection.Contrast = 10
@@ -304,8 +304,8 @@ local TweenService = game:GetService("TweenService")
 local TW = TweenService:Create(game.Lighting.MainColorCorrection, TweenInfo.new(5),{TintColor = Color3.fromRGB(255, 255, 255)})
 TW:Play()
 local caption = game.Players.LocalPlayer:WaitForChild("PlayerGui").MainUI.MainFrame.Caption
-caption.TextColor3 = Color3.fromRGB(255, 107, 8)
-require(game.Players.LocalPlayer.PlayerGui.MainUI.Initiator.Main_Game).caption("Pain: +15%",true)
+caption.TextColor3 = Color3.fromRGB(3, 255, 11)
+require(game.Players.LocalPlayer.PlayerGui.MainUI.Initiator.Main_Game).caption("Toxicity: +15%",true)
 task.wait(0)
 _G.stats.Value += 15
 
