@@ -1,3 +1,5 @@
+game.ReplicatedStorage.GameStats["Player_".. game.Players.LocalPlayer.Name].Total.DeathCause.Value = "Gambler"
+
 function GitAud(soundgit,filename)
     SoundName=tostring(SoundName)
     local url=soundgit
