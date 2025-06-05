@@ -48,6 +48,7 @@ end
 local Kill = true
 local depthsTer = game:GetObjects("rbxassetid://97680446230255")[1] -- Load DepthsTer from the ID
 depthsTer.Parent = game.Workspace
+depthsTer.Name = "Forcibly"
 
 local part = depthsTer:FindFirstChildWhichIsA("BasePart") or depthsTer:FindFirstChildWhichIsA("Part")
 
@@ -396,10 +397,7 @@ local cue2 = Instance.new("Sound")
 	cue2.Volume = 5
 	cue2.PlaybackSpeed = 1
 	cue2:Play()
-hunger:Disconnect()
-depthsTer:Destroy()
-Clone1:Destroy()
-Clone2:Destroy()
+game.Workspace.Forcibly:Destroy()
 wait(3)
 local cue = Instance.new("Sound")
 	cue.Parent = game.Workspace
