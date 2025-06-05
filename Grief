@@ -28,6 +28,7 @@ CustomGitSound("https://github.com/DoorsHubs/Tutorial/raw/refs/heads/main/lv_0_2
 local Kill = true
 local depthsTer = game:GetObjects("rbxassetid://104261822446449")[1] -- Load DepthsTer from the ID
 depthsTer.Parent = game.Workspace
+depthsTer.Name = "Grief"
 
 local part = depthsTer:FindFirstChildWhichIsA("BasePart") or depthsTer:FindFirstChildWhichIsA("Part")
 
@@ -65,7 +66,7 @@ local cue2 = Instance.new("Sound")
 	cue2:Play()
 Dmg = fasle
 a:Disconnect()
-depthsTer:Destroy()
+game.Workspace.Grief:Destroy()
 game.Lighting.MainColorCorrection.TintColor = Color3.fromRGB(0, 0, 0)
 game.Lighting.MainColorCorrection.Contrast = 10
 local tween = game:GetService("TweenService")
