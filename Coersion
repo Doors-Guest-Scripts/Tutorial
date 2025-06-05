@@ -1,8 +1,3 @@
-local hunger = game.ReplicatedStorage.GameData.LatestRoom.Changed:Connect(function()
-game.Players.LocalPlayer.Character.Humanoid:TakeDamage(1000)
-game:GetService("ReplicatedStorage").GameStats["Player_".. game.Players.LocalPlayer.Name].Total.DeathCause.Value = "Coersion [Opened Door]"
-end)
-
 function GitAud(soundgit,filename)
     SoundName=tostring(SoundName)
     local url=soundgit
@@ -52,6 +47,7 @@ end
 local Kill = true
 local depthsTer = game:GetObjects("rbxassetid://86935728207882")[1] -- Load DepthsTer from the ID
 depthsTer.Parent = game.Workspace
+depthsTer.Name = "Coersion"
 
 local part = depthsTer:FindFirstChildWhichIsA("BasePart") or depthsTer:FindFirstChildWhichIsA("Part")
 
@@ -94,6 +90,7 @@ TW:Play()
 local Kill = true
 local eye = game:GetObjects("rbxassetid://86935728207882")[1]
 eye.Parent = game.Workspace
+eye.Name = "CoersionClone1"
 local eyes = eye:FindFirstChildWhichIsA("BasePart") or eye:FindFirstChildWhichIsA("Part")
 eyes.CFrame = game.Workspace.CurrentRooms:GetChildren()[#game.Workspace.CurrentRooms:GetChildren() - 1].Door.Door.CFrame + Vector3.new(10,0,20)
 
@@ -242,33 +239,6 @@ end)
 
 entity:SetCallback("OnDespawned", function()
     print("Entity has despawned")
-end)
-
-entity:SetCallback("OnDamagePlayer", function(newHealth)
-	if newHealth == 0 then
-		print("Entity has killed the player")
-	else
-		print("Entity has damaged the player")
-                   firesignal(game.ReplicatedStorage.RemotesFolder.DeathHint.OnClientEvent, {"You died to who you call A-60...","He isnt very fast but he can rebound many times without noticing","Atleast you did good, keep going!"},"Blue")
-	end
-end)
-
---[[
-
-DEVELOPER NOTE:
-By overwriting 'CrucifixionOverwrite' the default crucifixion callback will be replaced with your custom callback.
-
-entity:SetCallback("CrucifixionOverwrite", function()
-    print("Custom crucifixion callback")
-end)
-
-]]--
-
----====== Run entity ======---
-
-entity:Run()
-
-wait(10)
 game.Lighting.MainColorCorrection.TintColor = Color3.fromRGB(0, 0, 0)
 game.Lighting.MainColorCorrection.Contrast = 10
 local tween = game:GetService("TweenService")
@@ -284,9 +254,8 @@ local cue2 = Instance.new("Sound")
 	cue2.Volume = 5
 	cue2.PlaybackSpeed = 1
 	cue2:Play()
-depthsTer:Destroy()
-eye:Destroy()
-hunger:Disconnect()
+game.Workspace.Coersion:Destroy()
+game.Workspace.CoersionClone1:Destroy()
 Kill = false
 wait(3)
 local cue = Instance.new("Sound")
@@ -319,3 +288,28 @@ achievementGiver({
     Reason = "Encounter Coersion",
     Image = "rbxassetid://110474099757680"
 })
+end)
+
+entity:SetCallback("OnDamagePlayer", function(newHealth)
+	if newHealth == 0 then
+		print("Entity has killed the player")
+	else
+		print("Entity has damaged the player")
+                   firesignal(game.ReplicatedStorage.RemotesFolder.DeathHint.OnClientEvent, {"You died to who you call A-60...","He isnt very fast but he can rebound many times without noticing","Atleast you did good, keep going!"},"Blue")
+	end
+end)
+
+--[[
+
+DEVELOPER NOTE:
+By overwriting 'CrucifixionOverwrite' the default crucifixion callback will be replaced with your custom callback.
+
+entity:SetCallback("CrucifixionOverwrite", function()
+    print("Custom crucifixion callback")
+end)
+
+]]--
+
+---====== Run entity ======---
+
+entity:Run()
