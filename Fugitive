@@ -33,6 +33,7 @@ local dmg = true
 local TweenService = game:GetService("TweenService")
 local s = game:GetObjects("rbxassetid://113652131287587")[1]
 s.Parent = workspace
+s.Name = "Fugitive"
 local ss = s:FindFirstChildWhichIsA("BasePart")
 ss.CFrame = workspace.CurrentRooms:FindFirstChild(game.ReplicatedStorage.GameData.LatestRoom.Value):WaitForChild("RoomEntrance").CFrame * CFrame.new(math.random(-5, 5), 0, -15)
 
@@ -127,7 +128,7 @@ local cue2 = Instance.new("Sound")
 	cue2.Volume = 5
 	cue2.PlaybackSpeed = 1
 	cue2:Play()
-s:Destroy()
+game.Workspace.Fugitive:Destroy()
 dmg = false
 wait(3)
 local cue = Instance.new("Sound")
