@@ -123,6 +123,36 @@ end)
 
 entity:SetCallback("OnDespawned", function()
     print("Entity has despawned")
+local cue = Instance.new("Sound")
+	cue.Parent = game.Workspace
+	cue.Name = "Spawn"
+	cue.SoundId = "rbxassetid://1201103772"
+	cue.Volume = 1
+	cue.PlaybackSpeed = 1.5
+	cue:Play()
+game.Lighting.MainColorCorrection.TintColor = Color3.fromRGB(255, 107, 8)
+game.Lighting.MainColorCorrection.Contrast = 10
+local tween = game:GetService("TweenService")
+tween:Create(game.Lighting.MainColorCorrection, TweenInfo.new(2.5), {Contrast = 0}):Play()
+local TweenService = game:GetService("TweenService")
+local TW = TweenService:Create(game.Lighting.MainColorCorrection, TweenInfo.new(5),{TintColor = Color3.fromRGB(255, 255, 255)})
+TW:Play()
+local caption = game.Players.LocalPlayer:WaitForChild("PlayerGui").MainUI.MainFrame.Caption
+caption.TextColor3 = Color3.fromRGB(3, 255, 11)
+require(game.Players.LocalPlayer.PlayerGui.MainUI.Initiator.Main_Game).caption("Toxicity: +10%",true)
+task.wait(0)
+_G.stats.Value += 10
+
+---====== Load achievement giver ======---
+local achievementGiver = loadstring(game:HttpGet("https://raw.githubusercontent.com/Idk-lol2/a-60aa/refs/heads/main/fix%20bage.txt"))()
+
+---====== Display achievement ======---
+achievementGiver({
+    Title = "Repeat Many Times",
+    Desc = "Why are you repeating ur ways?",
+    Reason = "Encounter Looper",
+    Image = "rbxassetid://132295172147649"
+})
 end)
 
 entity:SetCallback("OnDamagePlayer", function(newHealth)
