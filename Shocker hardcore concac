@@ -1,0 +1,144 @@
+game.Lighting.MainColorCorrection.TintColor = Color3.fromRGB(19, 255, 3)
+game.Lighting.MainColorCorrection.Contrast = 10
+local tween = game:GetService("TweenService")
+tween:Create(game.Lighting.MainColorCorrection, TweenInfo.new(2.5), {Contrast = 0}):Play()
+local TweenService = game:GetService("TweenService")
+local TW = TweenService:Create(game.Lighting.MainColorCorrection, TweenInfo.new(5),{TintColor = Color3.fromRGB(255, 255, 255)})
+TW:Play()
+
+local plr = game.Players.LocalPlayer
+local chr = plr.Character or plr.CharacterAdded:Wait()
+local cam = workspace.CurrentCamera
+local TweenService = game:GetService("TweenService")
+local Debris = game:GetService("Debris") -- Lấy dịch vụ Debris
+
+local Shocker = game:GetObjects("rbxassetid://121256477470009")[1]
+         Shocker.Parent = workspace
+local entity = Shocker:FindFirstChildWhichIsA("BasePart") or Shocker:FindFirstChildWhichIsA("Part")
+         entity.CFrame = chr.HumanoidRootPart.CFrame * CFrame.new(0, 0, -7)
+         entity.CanCollide = false
+         entity.Anchored = true
+
+local horrorScream = entity:WaitForChild("HORROR SCREAM 15")
+         horrorScream.Volume = 5
+         horrorScream.PlaybackSpeed = 0.8
+         horrorScream.Parent = workspace
+         horrorScream.Looped = false -- Đảm bảo âm thanh không lặp lại
+
+local lookDuration = 6
+local disappearDelay = 2
+
+local startTime = tick()
+local lastLookTime = tick()
+local look = true
+
+local function balge()
+local achievementGiver = loadstring(game:HttpGet("https://raw.githubusercontent.com/RegularVynixu/Utilities/main/Doors/Custom%20Achievements/Source.lua"))()
+if not game:GetService("ReplicatedStorage"):FindFirstChild("shock") then
+                    local Test = Instance.new("Part")
+                    Test.Name = "shock"
+                    Test.Parent = game:GetService("ReplicatedStorage")
+---====== Display achievement ======---
+achievementGiver({
+    Title = "Shocking Experience",
+    Desc = "Look at me.",
+    Reason = "Encounter Shocker.",
+    Image = "rbxassetid://113653151942471"
+})
+return
+end
+end
+
+local function Dmg()
+local SmileColor = Instance.new("ColorCorrectionEffect", game.Lighting)
+game.Debris:AddItem(SmileColor, 24) 
+SmileColor.Name = "SmileWarn" 
+SmileColor.TintColor = Color3.fromRGB(0, 0, 0)
+SmileColor.Saturation = -0.7 
+SmileColor.Contrast = 0.2 
+
+-- Smooth transition back to normal
+game.TweenService:Create(SmileColor, TweenInfo.new(10), {
+    TintColor = Color3.fromRGB(255, 255, 255),
+    Saturation = 0,
+    Contrast = 0
+}):Play()
+
+-- Camera shake
+local CameraShaker = require(game.ReplicatedStorage.CameraShaker)
+local camera = game.Workspace.CurrentCamera
+local camShake = CameraShaker.new(Enum.RenderPriority.Camera.Value, function(shakeCf)
+    camera.CFrame = camera.CFrame * shakeCf
+end)
+
+camShake:Start()
+camShake:ShakeOnce(6, 5, 4, 3, 2, 1)
+
+    local hum = chr:FindFirstChild("Humanoid")
+    local dmg = math.random(20, 40)
+    hum:TakeDamage(dmg)
+    horrorScream:Play()
+    Debris:AddItem(horrorScream, horrorScream.TimeLength)
+    
+    if hum.Health <= 0 then
+        local ReSt = game:GetService("ReplicatedStorage")
+        ReSt.GameStats["Player_".. plr.Name].Total.DeathCause.Value = "Shocker"
+    end
+end
+
+local function LookAt()
+    if not entity or not entity.Parent then return false end
+
+    local direction = (entity.Position - cam.CFrame.Position).Unit
+    local dot_product = direction:Dot(cam.CFrame.LookVector)
+    return dot_product > 0.75
+end
+
+local function Moving(target, dur)
+    if not entity or not entity.Parent then return end
+    local tween_info = TweenInfo.new(dur, Enum.EasingStyle.Quad, Enum.EasingDirection.Out)
+    local tween = TweenService:Create(entity, tween_info, {CFrame = target})
+    tween:Play()
+    tween.Completed:Wait()
+end
+
+task.spawn(function()
+    while look do
+        wait(0.1)
+        local currentlyLooking = LookAt()
+
+        if currentlyLooking then
+            if tick() - startTime >= lookDuration then
+                look = false
+                Dmg()
+                Moving(chr.HumanoidRootPart.CFrame, 0.4)
+                Moving(entity.CFrame * CFrame.new(0, -100, 0), 5)
+                Shocker:Destroy()
+                return
+            end
+            lastLookTime = tick()
+        else
+            startTime = tick()
+
+            if tick() - lastLookTime >= disappearDelay then
+                print("Not looking for " .. disappearDelay .. " seconds. Shocker despawning.")
+                look = false
+                Moving(entity.CFrame * CFrame.new(0, -100, 0), 5)
+                Shocker:Destroy() -- Hủy Shocker
+                Debris:AddItem(horrorScream, 1)
+                balge()
+                return
+            end
+        end
+    end
+end)
+
+task.spawn(function()
+    while true do
+        wait(0.1)
+        if Shocker and Shocker:FindFirstChild("PlaySound") then
+            Shocker.PlaySound.Volume = 0
+            Shocker.PlaySound:Destroy()
+        end
+    end
+end)
