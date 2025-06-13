@@ -72,8 +72,9 @@ end)
 
 entity:SetCallback("OnStartMoving", function()
     print("Entity has started moving")
+wait(3)
 if humanoid.MoveDirection.Magnitude > 0 then
-wait(15)
+wait(12)
 game.Players.LocalPlayer.Character.Humanoid.Health -= 1000
 game.ReplicatedStorage.GameStats["Player_".. game.Players.LocalPlayer.Name].Total.DeathCause.Value = "Cease"
 end
