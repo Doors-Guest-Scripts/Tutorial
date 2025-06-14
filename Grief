@@ -36,15 +36,110 @@ local part = depthsTer:FindFirstChildWhichIsA("BasePart") or depthsTer:FindFirst
 part.CFrame = game.Workspace.CurrentRooms:GetChildren()[#game.Workspace.CurrentRooms:GetChildren() - 1].Parts.Floor.CFrame + Vector3.new(0, 6, 0)
 
 wait(3)
+function GitAud(soundgit,filename)
+    SoundName=tostring(SoundName)
+    local url=soundgit
+    local FileName = filename
+    writefile(FileName..".mp3", game:HttpGet(url))
+    return (getcustomasset or getsynasset)(FileName..".mp3")
+end
+
+function CustomGitSound(soundlink, vol, filename)
+    local sound = Instance.new("Sound")
+    sound.SoundId = GitAud(soundlink, filename)
+    sound.Parent = workspace
+    sound.Name = "Voice_line1"
+    sound.Volume = 1.5
+   sound:Play()
+end
+
+CustomGitSound("https://github.com/DoorsHubs/Tutorial/raw/refs/heads/main/lv_0_20250614152135.mp3?raw=true", 1, " YellowGuyVoiceLine1")
+
 local caption = game.Players.LocalPlayer:WaitForChild("PlayerGui").MainUI.MainFrame.Caption
 caption.TextColor3 = Color3.fromRGB(255, 242, 3)
-require(game.Players.LocalPlayer.PlayerGui.MainUI.Initiator.Main_Game).caption("Don't move!",true)
-wait(3)
+require(game.Players.LocalPlayer.PlayerGui.MainUI.Initiator.Main_Game).caption("Here excuse me?",true)
+wait(1)
+local caption = game.Players.LocalPlayer:WaitForChild("PlayerGui").MainUI.MainFrame.Caption
+caption.TextColor3 = Color3.fromRGB(255, 242, 3)
+require(game.Players.LocalPlayer.PlayerGui.MainUI.Initiator.Main_Game).caption("English Or Spanish?",true)
+wait(2)
+function GitAud(soundgit,filename)
+    SoundName=tostring(SoundName)
+    local url=soundgit
+    local FileName = filename
+    writefile(FileName..".mp3", game:HttpGet(url))
+    return (getcustomasset or getsynasset)(FileName..".mp3")
+end
+
+function CustomGitSound(soundlink, vol, filename)
+    local sound = Instance.new("Sound")
+    sound.SoundId = GitAud(soundlink, filename)
+    sound.Parent = workspace
+    sound.Name = "Voice_line2"
+    sound.Volume = 1.5
+   sound:Play()
+end
+
+CustomGitSound("https://github.com/DoorsHubs/Tutorial/raw/refs/heads/main/lv_0_20250614152744.mp3?raw=true", 1, " YellowGuyVoiceLine2")
+
+local caption = game.Players.LocalPlayer:WaitForChild("PlayerGui").MainUI.MainFrame.Caption
+caption.TextColor3 = Color3.fromRGB(255, 255, 255)
+require(game.Players.LocalPlayer.PlayerGui.MainUI.Initiator.Main_Game).caption("[Player]: Uh.. English?",true)
+wait(1)
+local caption = game.Players.LocalPlayer:WaitForChild("PlayerGui").MainUI.MainFrame.Caption
+caption.TextColor3 = Color3.fromRGB(255, 242, 3)
+require(game.Players.LocalPlayer.PlayerGui.MainUI.Initiator.Main_Game).caption("Whoever move first will die!",true)
+wait(1)
+function GitAud(soundgit,filename)
+    SoundName=tostring(SoundName)
+    local url=soundgit
+    local FileName = filename
+    writefile(FileName..".mp3", game:HttpGet(url))
+    return (getcustomasset or getsynasset)(FileName..".mp3")
+end
+
+function CustomGitSound(soundlink, vol, filename)
+    local sound = Instance.new("Sound")
+    sound.SoundId = GitAud(soundlink, filename)
+    sound.Parent = workspace
+    sound.Name = "Voice_line3"
+    sound.Volume = 1.5
+   sound:Play()
+end
+
+CustomGitSound("https://github.com/DoorsHubs/Tutorial/raw/refs/heads/main/lv_0_20250614153341.mp3?raw=true", 1, " YellowGuyVoiceLine3")
+
+local SmileColor = Instance.new("ColorCorrectionEffect", game.Lighting)
+game.Debris:AddItem(SmileColor, 24) 
+SmileColor.Name = "SmileWarn" 
+SmileColor.TintColor = Color3.fromRGB(0, 0, 0)
+SmileColor.Saturation = -0.7 
+SmileColor.Contrast = 0.2 
+
+-- Smooth transition back to normal
+game.TweenService:Create(SmileColor, TweenInfo.new(10), {
+    TintColor = Color3.fromRGB(255, 255, 255),
+    Saturation = 0,
+    Contrast = 0
+}):Play()
+
+-- Camera shake
+local CameraShaker = require(game.ReplicatedStorage.CameraShaker)
+local camera = game.Workspace.CurrentCamera
+local camShake = CameraShaker.new(Enum.RenderPriority.Camera.Value, function(shakeCf)
+    camera.CFrame = camera.CFrame * shakeCf
+end)
+
+camShake:Start()
+camShake:ShakeOnce(3, 2.5, 2, 1.5, 1, 0.5)
+
 local dmg = true
 local a = game.Players.LocalPlayer.Character.Humanoid.Running:Connect(function()
 if dmg == true then
-game.Players.LocalPlayer.Character.Humanoid.Health -= 0.5
+game.Players.LocalPlayer.Character.Humanoid.Health -= 100
 firesignal(game.ReplicatedStorage.RemotesFolder.DeathHint.OnClientEvent, {"You died to who you call Grief...","He spawns in center of room and he will damage you if you move untils he disappeared","I believe in you!"},"Blue")
+
+game.ReplicatedStorage.GameStats["Player_".. game.Players.LocalPlayer.Name].Total.DeathCause.Value = "Grief"
 end
 end)
 
