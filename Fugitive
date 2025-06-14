@@ -38,6 +38,26 @@ local ss = s:FindFirstChildWhichIsA("BasePart")
 ss.CFrame = workspace.CurrentRooms:FindFirstChild(game.ReplicatedStorage.GameData.LatestRoom.Value):WaitForChild("RoomEntrance").CFrame * CFrame.new(math.random(-5, 5), 0, -15)
 
 wait(3)
+function GitAud(soundgit,filename)
+    SoundName=tostring(SoundName)
+    local url=soundgit
+    local FileName = filename
+    writefile(FileName..".mp3", game:HttpGet(url))
+    return (getcustomasset or getsynasset)(FileName..".mp3")
+end
+
+function CustomGitSound(soundlink, vol, filename)
+    local sound = Instance.new("Sound")
+    sound.SoundId = GitAud(soundlink, filename)
+    sound.Parent = workspace
+    sound.Name = "Fu's Voiceline1"
+    sound.PlaybackSpeed = 1
+    sound.Volume = 1.5
+   sound:Play()
+end
+
+CustomGitSound("https://github.com/DoorsHubs/Tutorial/raw/refs/heads/main/XRecorder_Edited_20250614_17.mp3?raw=true", 1, " FugitiveVoiceline1")
+
 local caption = game.Players.LocalPlayer:WaitForChild("PlayerGui").MainUI.MainFrame.Caption
 caption.TextColor3 = Color3.fromRGB(255, 3, 251)
 require(game.Players.LocalPlayer.PlayerGui.MainUI.Initiator.Main_Game).caption("10 seconds to hide..",true)
@@ -54,13 +74,13 @@ function CustomGitSound(soundlink, vol, filename)
     local sound = Instance.new("Sound")
     sound.SoundId = GitAud(soundlink, filename)
     sound.Parent = workspace
-    sound.Name = "Clock"
+    sound.Name = "Fu's Voiceline2"
     sound.PlaybackSpeed = 1
-    sound.Volume = 2
+    sound.Volume = 1.5
    sound:Play()
 end
 
-CustomGitSound("https://github.com/DoorsHubs/Tutorial/raw/refs/heads/main/iLoveYt.net_YouTube_clock-ticking-sound-effect_Media_XT0FLZymGE8_003_360p.mp3?raw=true", 1, " ClockTickingSound")
+CustomGitSound("https://github.com/DoorsHubs/Tutorial/raw/refs/heads/main/XRecorder_Edited_20250614_16.mp3?raw=true", 1, " FugitiveVoiceline2")
 
 local caption = game.Players.LocalPlayer:WaitForChild("PlayerGui").MainUI.MainFrame.Caption
 caption.TextColor3 = Color3.fromRGB(255, 3, 251)
@@ -102,7 +122,6 @@ local caption = game.Players.LocalPlayer:WaitForChild("PlayerGui").MainUI.MainFr
 caption.TextColor3 = Color3.fromRGB(255, 3, 251)
 require(game.Players.LocalPlayer.PlayerGui.MainUI.Initiator.Main_Game).caption("1",true)
 wait(1)
-game.Workspace.Clock:Destroy()
 task.spawn(function()
 while true do wait(0,5)
 if not chr:GetAttribute("Hiding") and dmg == true then
