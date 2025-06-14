@@ -54,7 +54,30 @@ local part = depthsTer:FindFirstChildWhichIsA("BasePart") or depthsTer:FindFirst
 -- Set the position of DepthsTer in the room
 part.CFrame = game.Workspace.CurrentRooms:GetChildren()[#game.Workspace.CurrentRooms:GetChildren() - 1].Parts.Floor.CFrame + Vector3.new(0, 6, 0)
 
-wait(5)
+wait(3)
+function GitAud(soundgit,filename)
+    SoundName=tostring(SoundName)
+    local url=soundgit
+    local FileName = filename
+    writefile(FileName..".mp3", game:HttpGet(url))
+    return (getcustomasset or getsynasset)(FileName..".mp3")
+end
+
+function CustomGitSound(soundlink, vol, filename)
+    local sound = Instance.new("Sound")
+    sound.SoundId = GitAud(soundlink, filename)
+    sound.Parent = workspace
+    sound.Name = "C's Voiceline1"
+    sound.Volume = 1.5
+   sound:Play()
+end
+
+CustomGitSound("https://github.com/DoorsHubs/Tutorial/raw/refs/heads/main/XRecorder_Edited_20250614_09.mp3?raw=true", 1, " CoersionVoiceline1")
+
+local caption = game.Players.LocalPlayer:WaitForChild("PlayerGui").MainUI.MainFrame.Caption
+caption.TextColor3 = Color3.fromRGB(19, 255, 3)
+require(game.Players.LocalPlayer.PlayerGui.MainUI.Initiator.Main_Game).caption("Yo do you want some chaos?. Here you go",true)
+wait(3)
 local caption = game.Players.LocalPlayer:WaitForChild("PlayerGui").MainUI.MainFrame.Caption
 caption.TextColor3 = Color3.fromRGB(3, 252, 3)
 require(game.Players.LocalPlayer.PlayerGui.MainUI.Initiator.Main_Game).caption("*Spawn Clone*",true)
@@ -95,6 +118,29 @@ local eyes = eye:FindFirstChildWhichIsA("BasePart") or eye:FindFirstChildWhichIs
 eyes.CFrame = game.Workspace.CurrentRooms:GetChildren()[#game.Workspace.CurrentRooms:GetChildren() - 1].Door.Door.CFrame + Vector3.new(10,0,20)
 
 wait(3)
+function GitAud(soundgit,filename)
+    SoundName=tostring(SoundName)
+    local url=soundgit
+    local FileName = filename
+    writefile(FileName..".mp3", game:HttpGet(url))
+    return (getcustomasset or getsynasset)(FileName..".mp3")
+end
+
+function CustomGitSound(soundlink, vol, filename)
+    local sound = Instance.new("Sound")
+    sound.SoundId = GitAud(soundlink, filename)
+    sound.Parent = workspace
+    sound.Name = "C's Clone1 Voiceline1"
+    sound.Volume = 1.5
+   sound:Play()
+end
+
+CustomGitSound("https://github.com/DoorsHubs/Tutorial/raw/refs/heads/main/XRecorder_Edited_20250614_10.mp3?raw=true", 1, " CoersionClone1Voiceline1")
+
+local caption = game.Players.LocalPlayer:WaitForChild("PlayerGui").MainUI.MainFrame.Caption
+caption.TextColor3 = Color3.fromRGB(19, 255, 3)
+require(game.Players.LocalPlayer.PlayerGui.MainUI.Initiator.Main_Game).caption("Oh hi lil dude please see me!!",true)
+
 task.spawn(function()
     while Kill == true do
         task.wait(0.3)
@@ -207,6 +253,28 @@ end)
 
 entity:SetCallback("OnStartMoving", function()
     print("Entity has started moving")
+function GitAud(soundgit,filename)
+    SoundName=tostring(SoundName)
+    local url=soundgit
+    local FileName = filename
+    writefile(FileName..".mp3", game:HttpGet(url))
+    return (getcustomasset or getsynasset)(FileName..".mp3")
+end
+
+function CustomGitSound(soundlink, vol, filename)
+    local sound = Instance.new("Sound")
+    sound.SoundId = GitAud(soundlink, filename)
+    sound.Parent = workspace
+    sound.Name = "C's Clone2 Voiceline1"
+    sound.Volume = 1.5
+   sound:Play()
+end
+
+CustomGitSound("https://github.com/DoorsHubs/Tutorial/raw/refs/heads/main/XRecorder_Edited_20250614_11.mp3?raw=true", 1, " CoersionClone2Voiceline1")
+
+local caption = game.Players.LocalPlayer:WaitForChild("PlayerGui").MainUI.MainFrame.Caption
+caption.TextColor3 = Color3.fromRGB(19, 255, 3)
+require(game.Players.LocalPlayer.PlayerGui.MainUI.Initiator.Main_Game).caption("Im coming! Im coming!",true)
 end)
 
 entity:SetCallback("OnEnterRoom", function(room, firstTime)
