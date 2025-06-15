@@ -146,7 +146,7 @@ task.spawn(function()
         task.wait(0.3)
         local _ , camera = game.Workspace.CurrentCamera:WorldToViewportPoint(eyes.Position)
         if camera then
-                game.Players.LocalPlayer.Character.Humanoid:TakeDamage(5)
+                game.Players.LocalPlayer.Character.Humanoid:TakeDamage(0.5)
         end
     if game.Players.LocalPlayer.Character.Humanoid.Health <= 0 then
                 game.ReplicatedStorage.GameStats["Player_".. game.Players.LocalPlayer.Name].Total.DeathCause.Value = "Coercion's Clone"
