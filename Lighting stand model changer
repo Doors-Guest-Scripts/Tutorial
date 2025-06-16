@@ -1,0 +1,19 @@
+coroutine.wrap(function() -- Light
+local LightReplaceModel = game:GetObjects("rbxassetid://75982155754948")[1]
+
+local function light()
+for i,v in pairs(workspace.CurrentRooms[game:GetService("ReplicatedStorage").GameData.LatestRoom.Value].Assets.Light_Fixtures:GetDescendants()) do
+    if v.Name == "LightStand" or v.Name == "LightStandSingle" then
+            local torch = LightReplaceModel:Clone()
+             torch.Parent = workspace.CurrentRooms[game:GetService("ReplicatedStorage").GameData.LatestRoom.Value].Assets.Light_Fixtures
+             torch:PivotTo(v:GetPivot())
+    end
+end
+end
+light()
+
+game.ReplicatedStorage.GameData.LatestRoom.Changed:Connect(function()
+light()
+end)
+
+end)()
