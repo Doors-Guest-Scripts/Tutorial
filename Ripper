@@ -41,7 +41,7 @@ local entity = spawner.Create({
 	Damage = {
 		Enabled = true,
 		Range = 40,
-		Amount = 125
+		Amount = 0.01
 	},
 	Crucifixion = {
 		Enabled = true,
@@ -51,7 +51,7 @@ local entity = spawner.Create({
 	},
 	Death = {
 		Type = "Guiding", -- "Curious"
-		Hints = {"You dead to Ripper", "Just hide ehen he appears"},
+		Hints = {"You dead to Ripper", "Just hide when he appears"},
 		Cause = ""
 	}
 })
@@ -61,36 +61,32 @@ local entity = spawner.Create({
 entity:SetCallback("OnSpawned", function()
     print("Entity has spawned")
 game.Lighting.MainColorCorrection.TintColor = Color3.fromRGB(255, 255, 255)
-game.Lighting.MainColorCorrection.Contrast = 10
+game.Lighting.MainColorCorrection.Contrast = 0.01
 local tween = game:GetService("TweenService")
 tween:Create(game.Lighting.MainColorCorrection, TweenInfo.new(2.5), {Contrast = 0}):Play()
 local TweenService = game:GetService("TweenService")
 local TW = TweenService:Create(game.Lighting.MainColorCorrection, TweenInfo.new(5),{TintColor = Color3.fromRGB(255, 0, 0)})
 TW:Play()
 
-local SmileColor = Instance.new("ColorCorrectionEffect", game.Lighting)
-game.Debris:AddItem(SmileColor, 24) 
-SmileColor.Name = "SmileWarn" 
-SmileColor.TintColor = Color3.fromRGB(255, 255, 255)
-SmileColor.Saturation = -0.7 
-SmileColor.Contrast = 0.2 
-
--- Smooth transition back to normal
-game.TweenService:Create(SmileColor, TweenInfo.new(10), {
-    TintColor = Color3.fromRGB(255, 255, 255),
-    Saturation = 0,
-    Contrast = 0
-}):Play()
-
--- Camera shake
 local CameraShaker = require(game.ReplicatedStorage.CameraShaker)
-local camera = game.Workspace.CurrentCamera
-local camShake = CameraShaker.new(Enum.RenderPriority.Camera.Value, function(shakeCf)
-    camera.CFrame = camera.CFrame * shakeCf
+local camara = game.Workspace.CurrentCamera
+
+local camShake = CameraShaker.new(Enum.RenderPriority.Camera.Value, function(cf)
+    camara.CFrame = camara.CFrame * cf
 end)
 
+
 camShake:Start()
-camShake:ShakeOnce(1, 1.5, 2, 2.5, 1.5, 1)
+camShake:Shake(CameraShaker.Presets.Earthquake)
+
+local sound = Instance.new("Sound")
+     	sound.SoundId = "rbxassetid://101665501585468"
+     	sound.Looped = false
+     	sound.Parent = workspace
+      sound.PlaybackSpeed = 0.8
+ 	    sound.Volume = 10
+     	sound:Play()
+Debris:AddItem(sound, 10)
 end)
 
 entity:SetCallback("OnStartMoving", function()
@@ -123,10 +119,14 @@ end)
 
 entity:SetCallback("OnDespawning", function()
     print("Entity is despawning")
-end)
+game.Lighting.MainColorCorrection.TintColor = Color3.fromRGB(255, 0, 0)
+game.Lighting.MainColorCorrection.Contrast = 0.01
+local tween = game:GetService("TweenService")
+tween:Create(game.Lighting.MainColorCorrection, TweenInfo.new(2.5), {Contrast = 0}):Play()
+local TweenService = game:GetService("TweenService")
+local TW = TweenService:Create(game.Lighting.MainColorCorrection, TweenInfo.new(5),{TintColor = Color3.fromRGB(255, 255, 255)})
+TW:Play()
 
-entity:SetCallback("OnDespawned", function()
-    print("Entity has despawned")
 function GitAud(soundgit,filename)
     SoundName=tostring(SoundName)
     local url=soundgit
@@ -139,7 +139,7 @@ function CustomGitSound(soundlink, vol, filename)
     local sound = Instance.new("Sound")
     sound.SoundId = GitAud(soundlink, filename)
     sound.Parent = workspace
-    sound.Volume = 5
+    sound.Volume = 10
     sound.Name = "DoorBreaker"
    sound:Play()
 end
@@ -152,7 +152,7 @@ local camShake = CameraShaker.new(Enum.RenderPriority.Camera.Value, function(sha
 camera.CFrame = camera.CFrame * shakeCf
 end)
 camShake:Start()
-camShake:ShakeOnce(10, 7, 5, 3, 2, 1)
+camShake:ShakeOnce(10, 5, 3, 1)
 wait(1)
 local CameraShaker = require(game.ReplicatedStorage.CameraShaker)
 local camera = game.Workspace.CurrentCamera
@@ -160,7 +160,7 @@ local camShake = CameraShaker.new(Enum.RenderPriority.Camera.Value, function(sha
 camera.CFrame = camera.CFrame * shakeCf
 end)
 camShake:Start()
-camShake:ShakeOnce(7, 6, 5, 4, 3, 1)
+camShake:ShakeOnce(7, 4, 2, 1)
 wait(1.5)
 local CameraShaker = require(game.ReplicatedStorage.CameraShaker)
 local camera = game.Workspace.CurrentCamera
@@ -169,22 +169,17 @@ camera.CFrame = camera.CFrame * shakeCf
 end)
 camShake:Start()
 camShake:ShakeOnce(5, 4, 3, 2, 1, 0.5)
+end)
 
-game.Lighting.MainColorCorrection.TintColor = Color3.fromRGB(255, 0, 0)
-game.Lighting.MainColorCorrection.Contrast = 10
-local tween = game:GetService("TweenService")
-tween:Create(game.Lighting.MainColorCorrection, TweenInfo.new(2.5), {Contrast = 0}):Play()
-local TweenService = game:GetService("TweenService")
-local TW = TweenService:Create(game.Lighting.MainColorCorrection, TweenInfo.new(5),{TintColor = Color3.fromRGB(255, 255, 255)})
-TW:Play()
-
+entity:SetCallback("OnDespawned", function()
+    print("Entity has despawned")
 ---====== Load achievement giver ======---
 local achievementGiver = loadstring(game:HttpGet("https://raw.githubusercontent.com/Idk-lol2/a-60aa/refs/heads/main/fix%20bage.txt"))()
 
 ---====== Display achievement ======---
 achievementGiver({
     Title = "Torn Apart",
-    Desc = "Here i com-",
+    Desc = "Don't leave too early.",
     Reason = "Encounter Ripper",
     Image = "rbxassetid://92340441373160"
 })
@@ -193,6 +188,8 @@ end)
 entity:SetCallback("OnDamagePlayer", function(newHealth)
 	if newHealth == 0 then
 		print("Entity has killed the player")
+	else
+		print("Entity has damaged the player")
 game.ReplicatedStorage.GameStats["Player_".. game.Players.LocalPlayer.Name].Total.DeathCause.Value = "Ripper"
 
 local function GetGitSound(GithubSnd, SoundName)
@@ -206,7 +203,8 @@ local function GetGitSound(GithubSnd, SoundName)
 end
                   
 local crash = GetGitSound("https://github.com/Brololto/Angler-sounds/blob/main/lv_0_20241221185918%20(1).mp3?raw=true", "Crashund")
-crash.Volume = 4
+crash.Volume = 10
+crash.PlaybackSpeed = 0.8
 crash.Parent = workspace
 crash:Play()
 
@@ -264,8 +262,8 @@ a:Disconnect()
 lockOn:Destroy()
 
 chr.HumanoidRootPart.Anchored = false
-	else
-		print("Entity has damaged the player")
+wait(0.2)
+game.Players.LocalPlayer.Character.Humanoid.Health = 0
 	end
 end)
 
