@@ -91,6 +91,7 @@ s.Silence:Play()
 local ambush = s:FindFirstChildWhichIsA("BasePart")
 ambush.CanCollide = true
 ambush.Anchored = true
+game.Workspace.CeaseStopping.Ambeince_Cease_Start.PlaybackSpeed = 0.4
 
 local hitbox = 120
 local RunService = game:GetService("RunService")
