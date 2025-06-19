@@ -12,7 +12,7 @@ function CustomGitSound(soundlink, vol, filename)
     sound.SoundId = GitAud(soundlink, filename)
     sound.Parent = workspace
     sound.Volume = 1.5
-    sound.PlaybackSpeed = 0.9
+    sound.PlaybackSpeed = 1
     sound.Name = "Horror"
    sound:Play()
 end
