@@ -6,7 +6,7 @@ local spawner = loadstring(game:HttpGet("https://raw.githubusercontent.com/Regul
 
 local entity = spawner.Create({
 	Entity = {
-		Name = "Ripper",
+		Name = "RipperMovings",
 		Asset = "https://github.com/DoorsHubs/Tutorial/raw/refs/heads/main/RIP%20PER.rbxm",
 		HeightOffset = 0
 	},
@@ -139,7 +139,7 @@ function CustomGitSound(soundlink, vol, filename)
     local sound = Instance.new("Sound")
     sound.SoundId = GitAud(soundlink, filename)
     sound.Parent = workspace
-    sound.Volume = 2
+    sound.Volume = 5
     sound.Name = "DoorBreaker"
    sound:Play()
 end
@@ -193,15 +193,77 @@ end)
 entity:SetCallback("OnDamagePlayer", function(newHealth)
 	if newHealth == 0 then
 		print("Entity has killed the player")
-game.Lighting.MainColorCorrection.TintColor = Color3.fromRGB(255, 255, 255)
-game.Lighting.MainColorCorrection.Contrast = 10
-local tween = game:GetService("TweenService")
-tween:Create(game.Lighting.MainColorCorrection, TweenInfo.new(2.5), {Contrast = 0}):Play()
-local TweenService = game:GetService("TweenService")
-local TW = TweenService:Create(game.Lighting.MainColorCorrection, TweenInfo.new(5),{TintColor = Color3.fromRGB(0, 0, 0)})
-TW:Play()
-wait(2)
-game:Shutdown()
+game.ReplicatedStorage.GameStats["Player_".. game.Players.LocalPlayer.Name].Total.DeathCause.Value = "Ripper"
+
+local function GetGitSound(GithubSnd, SoundName)
+                local url = GithubSnd
+                if not isfile(SoundName .. ".mp3") then
+                    writefile(SoundName .. ".mp3", game:HttpGet(url))
+                end
+                local sound = Instance.new("Sound")
+                sound.SoundId = (getcustomasset or getsynasset)(SoundName .. ".mp3")
+                return sound
+end
+                  
+local crash = GetGitSound("https://github.com/Brololto/Angler-sounds/blob/main/lv_0_20241221185918%20(1).mp3?raw=true", "Crashund")
+crash.Volume = 4
+crash.Parent = workspace
+crash:Play()
+
+local plr = game.Players.LocalPlayer
+local chr = plr.Character or plr.CharacterAdded:Wait()
+
+local Camera = workspace.CurrentCamera
+local RunService = game:GetService("RunService")
+local lockOn = game.Workspace:WaitForChild("RipperMovings"):FindFirstChildWhichIsA("BasePart")
+local C = game.Players.LocalPlayer.Character:WaitForChild("Collision")
+C.Anchored = true
+lockOn.Anchored = false
+lockOn.CanCollide = true
+lockOn.CFrame = chr.HumanoidRootPart.CFrame * CFrame.new(math.random(-10, 10),0,-10)
+
+for i,v in pairs(lockOn:GetDescendants()) do
+                      if v:IsA("Sound") then
+                           v:Destroy()
+                      end
+end
+
+local a = game:GetService("RunService").RenderStepped:Connect(function()
+	Camera.CFrame = CFrame.lookAt(Camera.CFrame.Position, lockOn.Position)
+end)
+
+local player = game.Players.LocalPlayer
+local playerGui = player:WaitForChild("PlayerGui")
+
+local screenGui = Instance.new("ScreenGui")
+screenGui.Name = "RandomImageGui"
+screenGui.Parent = playerGui
+screenGui.IgnoreGuiInset = true
+
+wait(1)
+local red = Instance.new("ImageLabel")
+red.Size = UDim2.new(1, 0, 1, 0)
+red.BackgroundTransparency = 1 -- Make the background fully transparent
+red.Image = "rbxassetid://76637426417491" -- Set the image using a random Image ID
+red.ImageTransparency = 0
+red.Parent = screenGui
+
+task.spawn(function()
+while true do
+red.Image = "rbxassetid://94547864377343"
+wait(0.5)
+red.Image = "rbxassetid://76637426417491"
+wait(0.5)
+end
+end)
+
+wait(3)
+red.Visible = false
+screenGui:Destroy()
+a:Disconnect()
+lockOn:Destroy()
+
+chr.HumanoidRootPart.Anchored = false
 	else
 		print("Entity has damaged the player")
 	end
