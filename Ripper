@@ -152,7 +152,7 @@ local camShake = CameraShaker.new(Enum.RenderPriority.Camera.Value, function(sha
 camera.CFrame = camera.CFrame * shakeCf
 end)
 camShake:Start()
-camShake:ShakeOnce(10, 5, 3, 1)
+camShake:ShakeOnce(10, 5, 1)
 wait(1)
 local CameraShaker = require(game.ReplicatedStorage.CameraShaker)
 local camera = game.Workspace.CurrentCamera
@@ -160,7 +160,7 @@ local camShake = CameraShaker.new(Enum.RenderPriority.Camera.Value, function(sha
 camera.CFrame = camera.CFrame * shakeCf
 end)
 camShake:Start()
-camShake:ShakeOnce(7, 4, 2, 1)
+camShake:ShakeOnce(7, 4, 1)
 wait(1.5)
 local CameraShaker = require(game.ReplicatedStorage.CameraShaker)
 local camera = game.Workspace.CurrentCamera
@@ -168,7 +168,7 @@ local camShake = CameraShaker.new(Enum.RenderPriority.Camera.Value, function(sha
 camera.CFrame = camera.CFrame * shakeCf
 end)
 camShake:Start()
-camShake:ShakeOnce(5, 4, 3, 2, 1, 0.5)
+camShake:ShakeOnce(5, 4, 3, 2, 1)
 end)
 
 entity:SetCallback("OnDespawned", function()
