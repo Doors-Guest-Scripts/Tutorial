@@ -36,7 +36,7 @@ local entity = spawner.Create({
 	Damage = {
 		Enabled = true,
 		Range = 100,
-		Amount = 0.0001
+		Amount = 0.01
 	},
 	Crucifixion = {
 		Enabled = true,
@@ -262,8 +262,8 @@ tran:Play()
 wait(0.2)
 rot:Play()
 
-game.Players.LocalPlayer.Character.Humanoid.Health -= 10
-game.ReplicatedStorage.GameStats["Player_".. game.Players.LocalPlayer.Name].Total.DeathCause.Value = "Multi Monster"
+game.Players.LocalPlayer.Character.Humanoid.Health -= 100
+game.ReplicatedStorage.GameStats["Player_".. game.Players.LocalPlayer.Name].Total.DeathCause.Value = "A-60"
 
 wait(0.8)
 game.TweenService:Create(Background, TweenInfo.new(2), {BackgroundTransparency = 1}):Play()
