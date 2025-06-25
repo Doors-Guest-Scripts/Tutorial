@@ -1,9 +1,20 @@
-game.Lighting.MainColorCorrection.TintColor = Color3.fromRGB(143, 1, 1)
-game.Lighting.MainColorCorrection.Contrast = 0.01
-local tween = game:GetService("TweenService")
-tween:Create(game.Lighting.MainColorCorrection, TweenInfo.new(2.5), {Contrast = 0}):Play()
+local player = game.Players.LocalPlayer
+local playerGui = player:WaitForChild("PlayerGui")
+
+local screenGui = Instance.new("ScreenGui")
+screenGui.Name = "A90Warning"
+screenGui.Parent = playerGui
+screenGui.IgnoreGuiInset = true
+
+local warning = Instance.new("ImageLabel")
+warning.Name = "A90WarningUi"
+warning.Size = UDim2.new(1, 0, 1, 0)
+warning.BackgroundTransparency = 1 -- Make the background fully transparent
+warning.Image = "rbxassetid://133172077885322" -- Set the image using a random Image ID
+warning.ImageTransparency = 0
+warning.Parent = screenGui
 local TweenService = game:GetService("TweenService")
-local TW = TweenService:Create(game.Lighting.MainColorCorrection, TweenInfo.new(5),{TintColor = Color3.fromRGB(255, 255, 255)})
+local TW = TweenService:Create(game.Players.LocalPlayer.PlayerGui.A90Warning.A90WarningUi, TweenInfo.new(2),{ImageTransparency = 1})
 TW:Play()
 wait(2)
 
@@ -89,7 +100,7 @@ local ReSt = game:GetService("ReplicatedStorage")
  ReSt.GameStats["Player_".. game.Players.LocalPlayer.Name].Total.DeathCause.Value = "A-90"
 wait(1)
 angy.Size = UDim2.new(0, 500, 0, 500)
-game.Players.LocalPlayer.Character.Humanoid:TakeDamage(70)
+game.Players.LocalPlayer.Character.Humanoid:TakeDamage(90)
 local TweenService = game:GetService("TweenService")
 
 local time = TweenInfo.new(5)
@@ -100,3 +111,6 @@ bye:Play()
 end
 end
 end)
+
+wait(3)
+game.Players.LocalPlayer.PlayerGui.A90Warning:Destroy()
