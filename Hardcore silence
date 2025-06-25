@@ -1,3 +1,9 @@
+local plr = game.Players.LocalPlayer
+local chr = plr.Character or plr.CharacterAdded:Wait()
+local cam = workspace.CurrentCamera
+local dmg = true
+local TweenService = game:GetService("TweenService")
+
 ---====== Define spawner ======---
 
 local Spawner = loadstring(game:HttpGet("https://raw.githubusercontent.com/RegularVynixu/Utilities/main/Doors/Entity%20Spawner/V1/Source.lua"))()
@@ -5,12 +11,12 @@ local Spawner = loadstring(game:HttpGet("https://raw.githubusercontent.com/Regul
 ---====== Create entity ======---
 
 local entity = Spawner.createEntity({
-    CustomName = "Silence",
+    CustomName = "SilenceMovings",
     Model = "rbxassetid://111215333080443", -- Your entity's model url here ("rbxassetid://1234567890" or GitHub raw url)
     Speed = 30,
     MoveDelay = 0,
     HeightOffset = 0,
-    CanKill = true,
+    CanKill = false,
     KillRange = 40,
     SpawnInFront = false,
     ShatterLights = true,
@@ -25,8 +31,8 @@ local entity = Spawner.createEntity({
     },
     CamShake = {
         Enabled = true,
-        Values = {0.1, 0.2, 0.3, 0.4},
-        Range = 100
+        Values = {1, 2, 3, 4},
+        Range = 200
     },
     ResistCrucifix = false,
     BreakCrucifix = true,
@@ -49,8 +55,9 @@ end
 
 entity.Debug.OnEntityDespawned = function()
     print("Entity has despawned")
+dmg = false
 game.Lighting.MainColorCorrection.TintColor = Color3.fromRGB(48, 48, 48)
-game.Lighting.MainColorCorrection.Contrast = 10
+game.Lighting.MainColorCorrection.Contrast = 0
 local tween = game:GetService("TweenService")
 tween:Create(game.Lighting.MainColorCorrection, TweenInfo.new(2.5), {Contrast = 0}):Play()
 local TweenService = game:GetService("TweenService")
@@ -78,7 +85,49 @@ entity.Debug.OnEntityFinishedRebound = function()
 end
 
 entity.Debug.OnEntityEnteredRoom = function(room)
-    print("Entity entered room:", room)
+    print("Entity entered room: Lastest", room)
+if not chr:GetAttribute("Crouching") and dmg == true then
+local plr = game.Players.LocalPlayer
+local chr = plr.Character or plr.CharacterAdded:Wait()
+
+local Camera = workspace.CurrentCamera
+local RunService = game:GetService("RunService")
+local lockOn = game.Workspace:WaitForChild("SilenceMovings"):FindFirstChildWhichIsA("BasePart")
+local C = game.Players.LocalPlayer.Character:WaitForChild("Collision")
+C.Anchored = true
+lockOn.Anchored = false
+lockOn.CanCollide = true
+lockOn.CFrame = lockOn.CFrame * CFrame.new(0,1,0)
+
+local a = game:GetService("RunService").RenderStepped:Connect(function()
+	Camera.CFrame = CFrame.lookAt(Camera.CFrame.Position, lockOn.Position)
+end)
+wait(3)
+game.Lighting.MainColorCorrection.TintColor = Color3.fromRGB(48, 48, 48)
+game.Lighting.MainColorCorrection.Contrast = 0
+local tween = game:GetService("TweenService")
+tween:Create(game.Lighting.MainColorCorrection, TweenInfo.new(2.5), {Contrast = 0}):Play()
+local TweenService = game:GetService("TweenService")
+local TW = TweenService:Create(game.Lighting.MainColorCorrection, TweenInfo.new(3),{TintColor = Color3.fromRGB(0, 0, 0)})
+TW:Play()
+wait(5)
+replicatesignal(game.Players.LocalPlayer.Kill)
+
+firesignal(game.ReplicatedStorage.RemotesFolder.DeathHint.OnClientEvent, {"You died to who you call Silence...","When it came to the current room it will kill you if you dont crouch","I believe in you!"},"Blue")
+        	game.ReplicatedStorage.GameStats["Player_".. game.Players.LocalPlayer.Name].Total.DeathCause.Value = "Silence"
+
+screenGui:Destroy()
+a:Disconnect()
+lockOn:Destroy()
+game.Workspace.SilenceMovings:Destroy()
+game.Lighting.MainColorCorrection.TintColor = Color3.fromRGB(0, 0, 0)
+game.Lighting.MainColorCorrection.Contrast = 0
+local tween = game:GetService("TweenService")
+tween:Create(game.Lighting.MainColorCorrection, TweenInfo.new(2.5), {Contrast = 0}):Play()
+local TweenService = game:GetService("TweenService")
+local TW = TweenService:Create(game.Lighting.MainColorCorrection, TweenInfo.new(3),{TintColor = Color3.fromRGB(255, 255, 255)})
+TW:Play()
+end
 end
 
 entity.Debug.OnLookAtEntity = function()
