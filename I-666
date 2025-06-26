@@ -28,7 +28,7 @@ local entity = spawner.Create({
 	},
 	Movement = {
 		Speed = 6666,
-		Delay = 15,
+		Delay = 16.5,
 		Reversed = false
 	},
 	Rebounding = {
@@ -185,7 +185,7 @@ end)
 
 entity:Run()
 
-wait(15)
+wait(16.5)
 local player = game.Players.LocalPlayer
 local playerGui = player:WaitForChild("PlayerGui")
 
