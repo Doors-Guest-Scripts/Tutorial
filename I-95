@@ -6,37 +6,37 @@ local spawner = loadstring(game:HttpGet("https://raw.githubusercontent.com/Regul
 
 local entity = spawner.Create({
 	Entity = {
-		Name = "I-666",
-		Asset = "rbxassetid://104824938701121",
+		Name = "I-95",
+		Asset = "https://github.com/Darker-TheDarkestGuy/DOORS/raw/refs/heads/main/I-95-1.rbxm",
 		HeightOffset = 0
 	},
 	Lights = {
 		Flicker = {
-			Enabled = false,
-			Duration = 7
+			Enabled = true,
+			Duration = 50
 		},
 		Shatter = false,
 		Repair = false
 	},
 	Earthquake = {
-		Enabled = false
+		Enabled = true
 	},
 	CameraShake = {
 		Enabled = true,
-		Range = 200,
+		Range = 250,
 		Values = {10,10, 5, 5} -- Magnitude, Roughness, FadeIn, FadeOut
 	},
 	Movement = {
-		Speed = 6666,
+		Speed = 690,
 		Delay = 16.5,
 		Reversed = false
 	},
 	Rebounding = {
 		Enabled = true,
 		Type = "Ambush", -- "Blitz"
-		Min = 100,
-		Max = 100,
-		Delay = 0
+		Min = 20,
+		Max = 20,
+		Delay = 1
 	},
 	Damage = {
 		Enabled = true,
@@ -51,7 +51,7 @@ local entity = spawner.Create({
 	},
 	Death = {
 		Type = "Guiding", -- "Curious"
-		Hints = {"You dead to who called I-666", "He is too fast even you cant see him", "When you see him hide quickly as soon as possible", "You did good keep going!"},
+		Hints = {"You dead to who called I-95", "He is too fast even you cant see him", "When you see him hide quickly as soon as possible", "You did good keep going!"},
 		Cause = ""
 	}
 })
@@ -60,6 +60,11 @@ local entity = spawner.Create({
 
 entity:SetCallback("OnSpawned", function()
     print("Entity has spawned")
+workspace["I-95"]["I-95New"]["2"]:Destroy()
+workspace["I-95"]["I-95New"].Footsteps:Destroy()
+workspace["I-95"]["I-95New"]["Heavy Breathing ( Man )"]:Destroy()
+workspace["I-95"]["I-95New"].static:Destroy()
+
 function GitAud(soundgit,filename)
     SoundName=tostring(SoundName)
     local url=soundgit
@@ -72,20 +77,20 @@ function CustomGitSound(soundlink, vol, filename)
     local sound = Instance.new("Sound")
     sound.SoundId = GitAud(soundlink, filename)
     sound.Parent = workspace
-    sound.Name = "Theme666"
+    sound.Name = "Theme95"
     sound.Volume = 3
     sound.PlaybackSpeed = 1
    sound:Play()
 end
 
-CustomGitSound("https://github.com/vuivuiviu2/Guestly-ngoan-xinh-iu/blob/main/G-95.mp3?raw=true", 1, " I666theme")
+CustomGitSound("https://github.com/vuivuiviu2/Guestly-ngoan-xinh-iu/blob/main/G-95.mp3?raw=true", 1, " I95theme")
 
 game.Lighting.MainColorCorrection.TintColor = Color3.fromRGB(255, 255, 255)
 game.Lighting.MainColorCorrection.Contrast = 0
 local tween = game:GetService("TweenService")
 tween:Create(game.Lighting.MainColorCorrection, TweenInfo.new(2.5), {Contrast = 0}):Play()
 local TweenService = game:GetService("TweenService")
-local TW = TweenService:Create(game.Lighting.MainColorCorrection, TweenInfo.new(10),{TintColor = Color3.fromRGB(255, 0, 0)})
+local TW = TweenService:Create(game.Lighting.MainColorCorrection, TweenInfo.new(10),{TintColor = Color3.fromRGB(0, 0, 255)})
 TW:Play()
 end)
 
@@ -123,9 +128,9 @@ end)
 
 entity:SetCallback("OnDespawned", function()
     print("Entity has despawned")
-game.Players.LocalPlayer.PlayerGui.I666DIE:Destroy()
-game.Workspace.Theme666:Destroy()
-game.Lighting.MainColorCorrection.TintColor = Color3.fromRGB(255, 0, 0)
+game.Players.LocalPlayer.PlayerGui.I95DIE:Destroy()
+game.Workspace.Theme95:Destroy()
+game.Lighting.MainColorCorrection.TintColor = Color3.fromRGB(0, 0, 255)
 game.Lighting.MainColorCorrection.Contrast = 0
 local tween = game:GetService("TweenService")
 tween:Create(game.Lighting.MainColorCorrection, TweenInfo.new(2.5), {Contrast = 0}):Play()
@@ -139,8 +144,8 @@ local achievementGiver = loadstring(game:HttpGet("https://raw.githubusercontent.
 achievementGiver({
     Title = "The Ultimate Horror",
     Desc = "Let me cook.",
-    Reason = "Encounter I-666.",
-    Image = "rbxassetid://77714309161331"
+    Reason = "Encounter I-95.",
+    Image = "rbxassetid://88729159827843"
 })
 end)
 
@@ -162,7 +167,7 @@ TW:Play()
 wait(2)
 game.Players.LocalPlayer.Character.Humanoid.Health -= 100
 
-game.ReplicatedStorage.GameStats["Player_".. game.Players.LocalPlayer.Name].Total.DeathCause.Value = "I-666"
+game.ReplicatedStorage.GameStats["Player_".. game.Players.LocalPlayer.Name].Total.DeathCause.Value = "I-95"
 
 wait(1)
 game.Lighting.MainColorCorrection.Contrast = 0
@@ -190,12 +195,12 @@ local player = game.Players.LocalPlayer
 local playerGui = player:WaitForChild("PlayerGui")
 
 local screenGui = Instance.new("ScreenGui")
-screenGui.Name = "I666DIE"
+screenGui.Name = "I95DIE"
 screenGui.Parent = playerGui
 screenGui.IgnoreGuiInset = true
 
 local red1 = Instance.new("ImageLabel")
-red1.Name = "DIE"
+red1.Name = "EEE"
 red1.Size = UDim2.new(1, 0, 1, 0)
 red1.BackgroundTransparency = 1 -- Make the background fully transparent
 red1.ImageTransparency = 0
@@ -203,17 +208,19 @@ red1.Parent = screenGui
 
 task.spawn(function()
 while true do
-red1.Image = "rbxassetid://98465300620838"
+red1.Image = "rbxassetid://117224847771362"
+red1.ImageTransparency = 0.6
 wait(1.5)
-red1.Image = "rbxassetid://71820011049841"
+red1.Image = "rbxassetid://87451273669372"
 wait(1.5)
-red1.Image = "rbxassetid://121691039738175"
-wait(1.5)
-red1.Image = "rbxassetid://99216723644435"
-wait(1.5)
-red1.Image = "rbxassetid://95942925787503"
-wait(1.5)
-red1.Image = "rbxassetid://90310097411511"
-wait(1.5)
+red1.Image = "rbxassetid://101920521970573"
+red1.ImageTransparency = 0
+wait(1)
+red1.Image = "rbxassetid://86806542782457"
+wait(1)
+red1.Image = "rbxassetid://116237171573449"
+wait(1)
+red1.Image = "rbxassetid://93633410542634"
+wait(1)
 end
 end)
