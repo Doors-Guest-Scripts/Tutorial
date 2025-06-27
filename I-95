@@ -128,7 +128,6 @@ end)
 
 entity:SetCallback("OnDespawned", function()
     print("Entity has despawned")
-game.Players.LocalPlayer.PlayerGui.I95DIE:Destroy()
 game.Workspace.Theme95:Destroy()
 game.Lighting.MainColorCorrection.TintColor = Color3.fromRGB(0, 0, 255)
 game.Lighting.MainColorCorrection.Contrast = 0
@@ -189,38 +188,3 @@ end)
 ---====== Run entity ======---
 
 entity:Run()
-
-wait(16.5)
-local player = game.Players.LocalPlayer
-local playerGui = player:WaitForChild("PlayerGui")
-
-local screenGui = Instance.new("ScreenGui")
-screenGui.Name = "I95DIE"
-screenGui.Parent = playerGui
-screenGui.IgnoreGuiInset = true
-
-local red1 = Instance.new("ImageLabel")
-red1.Name = "EEE"
-red1.Size = UDim2.new(1, 0, 1, 0)
-red1.BackgroundTransparency = 1 -- Make the background fully transparent
-red1.ImageTransparency = 0
-red1.Parent = screenGui
-
-task.spawn(function()
-while true do
-red1.Image = "rbxassetid://117224847771362"
-red1.ImageTransparency = 0.6
-wait(1.5)
-red1.Image = "rbxassetid://87451273669372"
-wait(1.5)
-red1.Image = "rbxassetid://101920521970573"
-red1.ImageTransparency = 0
-wait(1)
-red1.Image = "rbxassetid://86806542782457"
-wait(1)
-red1.Image = "rbxassetid://116237171573449"
-wait(1)
-red1.Image = "rbxassetid://93633410542634"
-wait(1)
-end
-end)
