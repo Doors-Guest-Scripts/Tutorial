@@ -1,0 +1,106 @@
+local block = game:GetObjects("rbxassetid://100942890479616")[1]
+block.Parent = game.Workspace
+block.Name = "Blocker"
+local blocks = block:FindFirstChildWhichIsA("BasePart") or block:FindFirstChildWhichIsA("Part")
+blocks.CFrame = game.Workspace.CurrentRooms:GetChildren()[#game.Workspace.CurrentRooms:GetChildren() - 1].Door.Door.CFrame + Vector3.new(0,0,0)
+local cue = Instance.new("Sound")
+	cue.Parent = game.Workspace
+	cue.Name = "BlockerSpawn"
+	cue.SoundId = "rbxassetid://8954557835"
+	cue.Volume = 5
+	cue.PlaybackSpeed = 0.8
+	cue:Play()
+
+game.Lighting.MainColorCorrection.TintColor = Color3.fromRGB(0, 0, 0)
+game.Lighting.MainColorCorrection.Contrast = 0
+local tween = game:GetService("TweenService")
+tween:Create(game.Lighting.MainColorCorrection, TweenInfo.new(2.5), {Contrast = 0}):Play()
+local TweenService = game:GetService("TweenService")
+local TW = TweenService:Create(game.Lighting.MainColorCorrection, TweenInfo.new(3),{TintColor = Color3.fromRGB(255, 255, 255)})
+TW:Play()
+
+workspace.Blocker.Depth.Attachment.ParticleEmitter.Texture = "rbxassetid://114605274150854"
+workspace.Blocker.Depth.Attachment.PointLight.Brightness = 5
+workspace.Blocker.Depth.Attachment.PointLight.Color = Color3.fromRGB(0, 0, 255)
+workspace.Blocker.Depth.Attachment.PointLight.Range = 10
+workspace.Blocker.Depth.Attachment.Rays:Destroy()
+workspace.Blocker.Depth.Attachment.Smoke:Destroy()
+wait(3)
+local player = game.Players.LocalPlayer
+local playerGui = player:WaitForChild("PlayerGui")
+
+local screenGui = Instance.new("ScreenGui")
+screenGui.Name = "Timer"
+screenGui.Parent = playerGui
+screenGui.IgnoreGuiInset = true
+
+local red = Instance.new("ImageLabel")
+red.Name = "TimerReading"
+red.Size = UDim2.new(1, 0, 1, 0)
+red.BackgroundTransparency = 1 -- Make the background fully transparent
+red.ImageTransparency = 0
+red.Parent = screenGui
+
+local cue = Instance.new("Sound")
+	cue.Parent = game.Workspace
+	cue.Name = "BlockerClock"
+	cue.SoundId = "rbxassetid://4940109913"
+	cue.Volume = 3
+  cue.Looped = true
+	cue.PlaybackSpeed = 1
+	cue:Play()
+
+red.Image = "rbxassetid://107110502901232"
+wait(1)
+red.Image = "rbxassetid://111667549518102"
+wait(1)
+red.Image = "rbxassetid://137880194070539"
+wait(1)
+red.Image = "rbxassetid://93144047861860"
+wait(1)
+red.Image = "rbxassetid://99675854220063"
+wait(1)
+red.Image = "rbxassetid://117637760918775"
+wait(1)
+red.Image = "rbxassetid://80440759451528"
+wait(1)
+red.Image = "rbxassetid://85302286236659"
+wait(1)
+red.Image = "rbxassetid://104819942792664"
+wait(1)
+red.Image = "rbxassetid://105625127660321"
+wait(1)
+red.Image = "rbxassetid://136629080877354"
+wait(1)
+red.Image = "rbxassetid://77567865556758"
+wait(1)
+red.Image = "rbxassetid://118248880191507"
+wait(1)
+red.Image = "rbxassetid://113530735402927"
+wait(1)
+red.Image = "rbxassetid://98276546761948"
+wait(1)
+local TweenService = game:GetService("TweenService")
+local TW = TweenService:Create(game.Players.LocalPlayer.PlayerGui.Timer.TimerReading, TweenInfo.new(3),{ImageTransparency = 1})
+TW:Play()
+game.Workspace.BlockerClock:Destroy()
+game.Workspace.BlockerSpawn:Destroy()
+local TweenService = game:GetService("TweenService")
+local TW = TweenService:Create(workspace.Blocker.Depth.Attachment.ParticleEmitter, TweenInfo.new(3),{Brightness = 0})
+TW:Play()
+local TweenService = game:GetService("TweenService")
+local TW = TweenService:Create(workspace.Blocker.Depth.Attachment.PointLight, TweenInfo.new(3),{Range = 0})
+TW:Play()
+wait(3)
+block:Destroy()
+game.Players.LocalPlayer.PlayerGui.Timer:Destroy()
+-- Load achievement giver
+local achievementGiver = loadstring(game:HttpGet("https://raw.githubusercontent.com/RegularVynixu/Utilities/main/Doors/Custom%20Achievements/Source.lua"))()
+
+-- Display achievement
+achievementGiver({
+    Title = "Stucking",
+    Desc = "Imma block your ways",
+    Reason = "Encounter Blocker",
+    Image = "rbxassetid://90666165624802"
+})
