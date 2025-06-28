@@ -1,21 +1,10 @@
-function GitAud(soundgit,filename)
-    SoundName=tostring(SoundName)
-    local url=soundgit
-    local FileName = filename
-    writefile(FileName..".mp3", game:HttpGet(url))
-    return (getcustomasset or getsynasset)(FileName..".mp3")
-end
-
-function CustomGitSound(soundlink, vol, filename)
-    local sound = Instance.new("Sound")
-    sound.SoundId = GitAud(soundlink, filename)
-    sound.Parent = workspace
-    sound.Volume = 5
-    sound.Name = "Screaming"
-   sound:Play()
-end
-
-CustomGitSound("https://github.com/DoorsHubs/Tutorial/raw/refs/heads/main/lv_0_20250628112653.mp3?raw=true", 1, " Screaming")
+local cue = Instance.new("Sound")
+	cue.Parent = game.Workspace
+	cue.Name = "Screaming"
+	cue.SoundId = "rbxassetid://9114572454"
+	cue.Volume = 10
+	cue.PlaybackSpeed = 0.1
+	cue:Play()
 
 local cue = Instance.new("Sound")
 	cue.Parent = game.Workspace
@@ -56,7 +45,12 @@ workspace.Supervisor.Depth.Attachment.ParticleEmitter.Brightness = 0
 workspace.Supervisor.Depth.Attachment.PointLight.Range = 0
 workspace.Supervisor.Depth.Attachment.Rays.Brightness = 0
 workspace.Supervisor.Depth.Attachment.Smoke.Brightness = 0
-wait(6.6)
+wait(4.4)
+local TweenService = game:GetService("TweenService")
+local TW = TweenService:Create(game.Workspace.Screaming, TweenInfo.new(2),{Volume = 0})
+TW:Play()
+wait(2)
+game.Workspace.Screaming:Destroy()
 local TweenService = game:GetService("TweenService")
 local TW = TweenService:Create(workspace.Supervisor.Depth.Attachment.ParticleEmitter, TweenInfo.new(1.5),{Brightness = 1})
 TW:Play()
