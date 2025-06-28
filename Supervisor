@@ -52,12 +52,14 @@ local part = depthsTer:FindFirstChildWhichIsA("BasePart") or depthsTer:FindFirst
 
 -- Set the position of DepthsTer in the room
 part.CFrame = game.Workspace.CurrentRooms:GetChildren()[#game.Workspace.CurrentRooms:GetChildren() - 1].Parts.Floor.CFrame + Vector3.new(0, 6, 0)
-workspace.Supervisor.Depth.Attachment.ParticleEmitter.Texture = "rbxassetid://133835443438280"
+workspace.Supervisor.Depth.Attachment.ParticleEmitter.Brightness = 0
 workspace.Supervisor.Depth.Attachment.PointLight.Range = 0
 workspace.Supervisor.Depth.Attachment.Rays.Brightness = 0
 workspace.Supervisor.Depth.Attachment.Smoke.Brightness = 0
 wait(6.6)
-workspace.Supervisor.Depth.Attachment.ParticleEmitter.Texture = "rbxassetid://76009519367122"
+local TweenService = game:GetService("TweenService")
+local TW = TweenService:Create(workspace.Supervisor.Depth.Attachment.ParticleEmitter, TweenInfo.new(1.5),{Brightness = 1})
+TW:Play()
 local TweenService = game:GetService("TweenService")
 local TW = TweenService:Create(game.Workspace.Supervisor.Depth.Attachment.PointLight, TweenInfo.new(1.5),{Range = 15})
 TW:Play()
@@ -142,7 +144,19 @@ tween:Create(game.Lighting.MainColorCorrection, TweenInfo.new(2.5), {Contrast = 
 local TweenService = game:GetService("TweenService")
 local TW = TweenService:Create(game.Lighting.MainColorCorrection, TweenInfo.new(3),{TintColor = Color3.fromRGB(255, 255, 255)})
 TW:Play()
+local TweenService = game:GetService("TweenService")
+local TW = TweenService:Create(workspace.Supervisor.Depth.Attachment.ParticleEmitter, TweenInfo.new(3),{Brightness = 0})
+TW:Play()
+local TweenService = game:GetService("TweenService")
+local TW = TweenService:Create(game.Workspace.Supervisor.Depth.Attachment.PointLight, TweenInfo.new(3),{Range = 0})
+TW:Play()
+local TweenService = game:GetService("TweenService")
+local TW = TweenService:Create(workspace.Supervisor.Depth.Footsteps, TweenInfo.new(3),{Volume = 0})
+TW:Play()
 
+workspace.Supervisor.Depth.Attachment.Rays.Brightness = 0
+workspace.Supervisor.Depth.Attachment.Smoke.Brightness = 0
+wait(5)
 -- Destroy DepthTer when no longer needed
 depthsTer:Destroy()
 
