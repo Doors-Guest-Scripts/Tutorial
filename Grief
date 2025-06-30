@@ -159,7 +159,7 @@ local cue2 = Instance.new("Sound")
 	cue2.Volume = 5
 	cue2.PlaybackSpeed = 1
 	cue2:Play()
-Dmg = fasle
+dmg = fasle
 a:Disconnect()
 game.Workspace.Grief:Destroy()
 wait(3)
