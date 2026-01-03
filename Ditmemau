@@ -1,0 +1,167 @@
+--[[ 
+    DELAYED EXTREME JUMPSCARE + PREVIEW SOUND
+--]]
+
+local Players = game:GetService("Players")
+local TweenService = game:GetService("TweenService")
+local RunService = game:GetService("RunService")
+local Lighting = game:GetService("Lighting")
+
+local player = Players.LocalPlayer
+local camera = workspace.CurrentCamera
+
+-- ============ CONFIG ============
+local JUMPSCARE_IMAGE = "rbxassetid://131478715675612"
+
+local PREVIEW_SOUND_ID = "rbxassetid://137177653817621"
+
+local PRE_SHAKE_TIME = 7
+local PRE_SHAKE_INTENSITY = 0.02
+
+local SHAKE_INTENSITY = 1.5
+local SHAKE_TIME = 1.2
+local FOV_JUMP = 35
+-- =================================
+
+-- Save state
+local oldFOV = camera.FieldOfView
+local oldBrightness = Lighting.Brightness
+
+-- ============ GUI ============
+local gui = Instance.new("ScreenGui")
+gui.IgnoreGuiInset = true
+gui.ResetOnSpawn = false
+gui.Parent = player:WaitForChild("PlayerGui")
+
+local image = Instance.new("ImageLabel")
+image.AnchorPoint = Vector2.new(0.5,0.5)
+image.Position = UDim2.new(0.5,0,0.5,0)
+image.Size = UDim2.new(0.5,0,0.5,0)
+image.BackgroundTransparency = 1
+image.Image = JUMPSCARE_IMAGE
+image.Parent = gui
+
+-- ============ PREVIEW SOUND ============
+local previewSound = Instance.new("Sound")
+previewSound.SoundId = PREVIEW_SOUND_ID
+previewSound.Volume = 0
+previewSound.Looped = false
+previewSound.Parent = workspace
+previewSound:Play()
+
+TweenService:Create(
+    previewSound,
+    TweenInfo.new(PRE_SHAKE_TIME, Enum.EasingStyle.Linear),
+    {Volume = 3}
+):Play()
+
+-- ============ PRE-SHAKE ============
+local shakingPreview = true
+local basePos = image.Position
+
+task.spawn(function()
+    local start = tick()
+    while shakingPreview and tick() - start < PRE_SHAKE_TIME do
+        local offsetX = (math.random()-0.5) * PRE_SHAKE_INTENSITY
+        local offsetY = (math.random()-0.5) * PRE_SHAKE_INTENSITY
+        image.Position = basePos + UDim2.new(offsetX,0,offsetY,0)
+        RunService.RenderStepped:Wait()
+    end
+    image.Position = basePos
+end)
+
+-- Wait before jumpscare
+task.wait(PRE_SHAKE_TIME)
+shakingPreview = false
+
+-- STOP preview sound immediately
+previewSound:Stop()
+previewSound:Destroy()
+
+-- ============ SCREAM SOUND ============
+function GitAud(soundgit,filename)
+    SoundName=tostring(SoundName)
+    local url=soundgit
+    local FileName = filename
+    writefile(FileName..".mp3", game:HttpGet(url))
+    return (getcustomasset or getsynasset)(FileName..".mp3")
+end
+
+function CustomGitSound(soundlink, vol, filename)
+    local sound = Instance.new("Sound")
+    sound.SoundId = GitAud(soundlink, filename)
+    sound.Parent = workspace
+    sound.Name = "Jumpscare"
+    sound.Volume = 1
+end
+
+CustomGitSound("https://github.com/Doors-Guest-Scripts/Tutorial/raw/refs/heads/main/XRecorder_Edited_20260103_01.mp3?raw=true", 1, " jumpscare")
+
+-- ============ FLASH ============
+local cc = Instance.new("ColorCorrectionEffect")
+cc.Parent = Lighting
+cc.Brightness = 0
+cc.TintColor = Color3.fromRGB(255,255,255)
+
+-- ============ CAMERA SHAKE ============
+local shaking = true
+local camCF = camera.CFrame
+
+task.spawn(function()
+    local start = tick()
+    while shaking and tick() - start < SHAKE_TIME do
+        local offset = Vector3.new(
+            math.random(-100,100)/100 * SHAKE_INTENSITY,
+            math.random(-100,100)/100 * SHAKE_INTENSITY,
+            0
+        )
+        camera.CFrame = camCF * CFrame.new(offset)
+        RunService.RenderStepped:Wait()
+    end
+    camera.CFrame = camCF
+end)
+
+-- ============ JUMPSCARE ============
+TweenService:Create(image, TweenInfo.new(0.05), {
+    Size = UDim2.new(1.2,0,1.2,0)
+}):Play()
+
+TweenService:Create(camera, TweenInfo.new(0.15), {
+    FieldOfView = FOV_JUMP
+}):Play()
+
+TweenService:Create(cc, TweenInfo.new(0.1), {
+    Brightness = 2
+}):Play()
+
+sound:Play()
+
+task.delay(0.1,function()
+    cc.TintColor = Color3.fromRGB(255,0,0)
+    TweenService:Create(cc, TweenInfo.new(0.4), {
+        Brightness = 0.8
+    }):Play()
+end)
+
+-- ============ CLEANUP ============
+task.delay(1.2,function()
+    shaking = false
+
+    TweenService:Create(image, TweenInfo.new(0.4), {
+        ImageTransparency = 1
+    }):Play()
+
+    TweenService:Create(camera, TweenInfo.new(0.4), {
+        FieldOfView = oldFOV
+    }):Play()
+
+    TweenService:Create(cc, TweenInfo.new(0.4), {
+        Brightness = oldBrightness
+    }):Play()
+
+    task.delay(0.5,function()
+        gui:Destroy()
+        sound:Destroy()
+        cc:Destroy()
+    end)
+end)
